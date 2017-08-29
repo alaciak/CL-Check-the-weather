@@ -28,7 +28,8 @@ class CurrentWeather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: this.props.query
+      query: this.props.query,
+      loading: true
     }
   }
 
@@ -41,20 +42,24 @@ class CurrentWeather extends React.Component {
         city: data.name,
         temperature: data.main.temp,
         description: data.weather[0].description,
-        iconId: data.weather[0].icon
+        iconId: data.weather[0].icon,
+        loading: false
       });
     });
   }
 
   render() {
-    return <div className='container'>
-      <div className='row'>
-        <p>{ this.state.query }</p>
-        <City name={ this.state.city }/>
-        <WeatherConditions temperature={ this.state.temperature } description={ this.state.description }/>
-        <WeatherIcon iconId={ this.state.iconId }/>
+    if(this.state.loading) {
+      return null
+    } else {      
+      return <div className='container'>
+        <div className='row'>
+          <City name={ this.state.city }/>
+          <WeatherConditions temperature={ this.state.temperature } description={ this.state.description }/>
+          <WeatherIcon iconId={ this.state.iconId }/>
+        </div>
       </div>
-    </div>
+    }
   }
 }
 
