@@ -8,17 +8,14 @@ class SearchBox extends React.Component {
     }
   }
 
-handleOnClickSearch = event => {
-  event.preventDefault();
+  handleOnClickSearch = event => {
+    event.preventDefault();
     this.setState({
       text: ''
     });
-}
-handleOnBlur = event => {
-  this.setState({
-    text: 'Search by city name...'
-  })
-}
+  }
+
+
   handleOnChangeSearch = event => {
     event.preventDefault();
     this.setState({
@@ -26,8 +23,17 @@ handleOnBlur = event => {
     });
   }
 
+  handleOnClick = event => {
+    if(this.state.text !== 'Search by city name...' && typeof this.props.onChangeLocation === 'function') {
+      this.props.onChangeLocation(this.state.text);
+    }
+  }
+
   render() {
-    return <input className='col-10' type='text' value={ this.state.text } onChange={ this.handleOnChangeSearch } onClick={ this.handleOnClickSearch } onBlur={ this.handleOnBlur }></input>;
+    return <div>
+      <input className='col-10' type='text' value={ this.state.text } onChange={ this.handleOnChangeSearch } onClick={ this.handleOnClickSearch } ></input>
+      <div className='search-icon col-1' onClick={ this.handleOnClick }></div>
+    </div>;
   }
 }
 

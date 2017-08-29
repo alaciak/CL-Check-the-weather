@@ -8,26 +8,30 @@ class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-
+        query: ''
       }
     }
 
+  handleChangeLocation = text => {
+    this.setState({
+      query: text
+    });
+  }
+
   render() {
-    return
+    return <div>
+      <Header onChangeLocation = { this.handleChangeLocation }/>
+      <CurrentWeather query={ this.state.query } />
+    </div>
   }
 }
 
 document.addEventListener('DOMContentLoaded', function(){
 
 
-
 ReactDOM.render(
-      <Header />,
-      document.querySelector('header')
-  );
-ReactDOM.render(
-      <CurrentWeather query='London' />,
-      document.querySelector('#weather-current')
+      <App />,
+      document.querySelector('#app')
   );
 
 });

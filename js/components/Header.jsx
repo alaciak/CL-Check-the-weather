@@ -5,12 +5,14 @@ import SearchBox from './SearchBox.jsx';
 class Header extends React.Component {
 
   render() {
-    return <div className='container'>
-      <div className='row'>
-        <SearchBox/>
-        <div className='search-icon col-1'></div>
+    return <header>
+      <div className='container'>
+        <div className='row'>
+          <SearchBox onChangeLocation={ this.props.onChangeLocation }/>
+        </div>
       </div>
-    </div>
+    </header>
+
   }
 }
 
