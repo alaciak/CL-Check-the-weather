@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+video,
+canvas {
+  max-width: 100%;
+}
+
+.container .row::before,
+.container .row::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.container .row {
+  width: 100%;
+}
+
+.container .row .col-1 {
+  float: left;
+  width: 8.33333%;
+}
+
+.container .row .col-2 {
+  float: left;
+  width: 16.66667%;
+}
+
+.container .row .col-3 {
+  float: left;
+  width: 25%;
+}
+
+.container .row .col-4 {
+  float: left;
+  width: 33.33333%;
+}
+
+.container .row .col-5 {
+  float: left;
+  width: 41.66667%;
+}
+
+.container .row .col-6 {
+  float: left;
+  width: 50%;
+}
+
+.container .row .col-7 {
+  float: left;
+  width: 58.33333%;
+}
+
+.container .row .col-8 {
+  float: left;
+  width: 66.66667%;
+}
+
+.container .row .col-9 {
+  float: left;
+  width: 75%;
+}
+
+.container .row .col-10 {
+  float: left;
+  width: 83.33333%;
+}
+
+.container .row .col-11 {
+  float: left;
+  width: 91.66667%;
+}
+
+.container .row .col-12 {
+  float: left;
+  width: 100%;
+}
+
+body {
+  font-family: "Nunito", sans-sefif;
+  background-image: url(../img/background_main.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+header {
+  margin: 3rem;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.menu {
+  float: right;
+  padding: 1rem;
+}
+
+.menu span {
+  background-color: #494649;
+  display: block;
+  height: .15rem;
+  margin: .4rem;
+  width: 100%;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 1rem;
+  border: 0;
+  display: block;
+  font-size: 1.5rem;
+  color: #a09aa0;
+  font-family: "Nunito", sans-sefif;
+}
+
+.search-icon {
+  height: 2.5rem;
+  background: url(../img/loupe.jpg) no-repeat center/contain;
+  margin: 10px 0;
+  opacity: .8;
+}

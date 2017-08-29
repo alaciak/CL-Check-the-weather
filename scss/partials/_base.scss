@@ -1,0 +1,41 @@
+
+body {
+  font-family: $font-main;
+  background-image: url('../images/background_main.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+header {
+  margin: 3rem;
+  background-color: map-get($color-background, header);
+  border-radius: 5px;
+}
+
+.menu {
+  float: right;
+  padding: 1rem;
+  span {
+    background-color:  map-get($color-fonts, main);
+    display: block;
+    height: .15rem;
+    margin: .4rem;
+    width: 100%;
+  }
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 1rem;
+    border: 0;
+    display: block;
+    font-size: 1.5rem;
+    color: map-get($color-fonts, input);
+    font-family: $font-main;
+}
+
+.search-icon {
+  height: 2.5rem;
+  background: url('../images/loupe.jpg') no-repeat center/contain;
+  margin: 10px 0;
+  opacity: .8;
+}
