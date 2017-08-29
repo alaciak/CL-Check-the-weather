@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SearchCity extends React.Component {
+class SearchBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,4 +31,4 @@ handleOnBlur = event => {
   }
 }
 
-module.exports = SearchCity;
+module.exports = SearchBox;

@@ -10253,6 +10253,8 @@ var _CurrentWeather = __webpack_require__(190);
 
 var _CurrentWeather2 = _interopRequireDefault(_CurrentWeather);
 
+__webpack_require__(191);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22922,13 +22924,9 @@ var _reactDom = __webpack_require__(27);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Nav = __webpack_require__(187);
+var _SearchBox = __webpack_require__(189);
 
-var _Nav2 = _interopRequireDefault(_Nav);
-
-var _SearchCity = __webpack_require__(189);
-
-var _SearchCity2 = _interopRequireDefault(_SearchCity);
+var _SearchBox2 = _interopRequireDefault(_SearchBox);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22956,8 +22954,7 @@ var Header = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'row' },
-          _react2.default.createElement(_Nav2.default, null),
-          _react2.default.createElement(_SearchCity2.default, null),
+          _react2.default.createElement(_SearchBox2.default, null),
           _react2.default.createElement('div', { className: 'search-icon col-1' })
         )
       );
@@ -22970,108 +22967,8 @@ var Header = function (_React$Component) {
 module.exports = Header;
 
 /***/ }),
-/* 187 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(16);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(27);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _HamburgerMenu = __webpack_require__(188);
-
-var _HamburgerMenu2 = _interopRequireDefault(_HamburgerMenu);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Nav = function (_React$Component) {
-  _inherits(Nav, _React$Component);
-
-  function Nav() {
-    _classCallCheck(this, Nav);
-
-    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
-  }
-
-  _createClass(Nav, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'nav',
-        null,
-        _react2.default.createElement(_HamburgerMenu2.default, null)
-      );
-    }
-  }]);
-
-  return Nav;
-}(_react2.default.Component);
-
-module.exports = Nav;
-
-/***/ }),
-/* 188 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(16);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var HamburgerMenu = function (_React$Component) {
-  _inherits(HamburgerMenu, _React$Component);
-
-  function HamburgerMenu() {
-    _classCallCheck(this, HamburgerMenu);
-
-    return _possibleConstructorReturn(this, (HamburgerMenu.__proto__ || Object.getPrototypeOf(HamburgerMenu)).apply(this, arguments));
-  }
-
-  _createClass(HamburgerMenu, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { className: 'menu col-1' },
-        _react2.default.createElement('span', null),
-        _react2.default.createElement('span', null),
-        _react2.default.createElement('span', null)
-      );
-    }
-  }]);
-
-  return HamburgerMenu;
-}(_react2.default.Component);
-
-module.exports = HamburgerMenu;
-
-/***/ }),
+/* 187 */,
+/* 188 */,
 /* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23092,13 +22989,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SearchCity = function (_React$Component) {
-  _inherits(SearchCity, _React$Component);
+var SearchBox = function (_React$Component) {
+  _inherits(SearchBox, _React$Component);
 
-  function SearchCity(props) {
-    _classCallCheck(this, SearchCity);
+  function SearchBox(props) {
+    _classCallCheck(this, SearchBox);
 
-    var _this = _possibleConstructorReturn(this, (SearchCity.__proto__ || Object.getPrototypeOf(SearchCity)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (SearchBox.__proto__ || Object.getPrototypeOf(SearchBox)).call(this, props));
 
     _this.handleOnClickSearch = function (event) {
       event.preventDefault();
@@ -23126,17 +23023,17 @@ var SearchCity = function (_React$Component) {
     return _this;
   }
 
-  _createClass(SearchCity, [{
+  _createClass(SearchBox, [{
     key: 'render',
     value: function render() {
       return _react2.default.createElement('input', { className: 'col-10', type: 'text', value: this.state.text, onChange: this.handleOnChangeSearch, onClick: this.handleOnClickSearch, onBlur: this.handleOnBlur });
     }
   }]);
 
-  return SearchCity;
+  return SearchBox;
 }(_react2.default.Component);
 
-module.exports = SearchCity;
+module.exports = SearchBox;
 
 /***/ }),
 /* 190 */
@@ -23177,7 +23074,7 @@ var City = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'col-4 weather-current_city' },
         this.props.name
       );
     }
@@ -23200,15 +23097,16 @@ var WeatherConditions = function (_React$Component2) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'col-4' },
         _react2.default.createElement(
           'p',
-          null,
-          this.props.temperature
+          { className: 'weather-current_temperature' },
+          this.props.temperature,
+          ' \u2103 '
         ),
         _react2.default.createElement(
           'p',
-          null,
+          { className: 'weather-current_description' },
           this.props.description
         )
       );
@@ -23230,7 +23128,11 @@ var WeatherIcon = function (_React$Component3) {
   _createClass(WeatherIcon, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('div', { style: { backgroundImage: 'url(https://openweathermap.org/img/w/' + this.props.iconId + '.png)', height: '100px' } });
+      return _react2.default.createElement(
+        'div',
+        { className: 'col-4 weather-current_icon' },
+        _react2.default.createElement('img', { src: 'https://openweathermap.org/img/w/' + this.props.iconId + '.png' })
+      );
     }
   }]);
 
@@ -23263,11 +23165,10 @@ var CurrentWeather = function (_React$Component4) {
         console.log(data.weather[0].icon);
         _this5.setState({
           city: data.name,
-          temperature: data.main.temp,
+          temperature: Math.ceil(data.main.temp),
           description: data.weather[0].description,
           iconId: data.weather[0].icon,
-          loading: false
-        });
+          loading: false });
       });
     }
   }, {
@@ -23281,7 +23182,7 @@ var CurrentWeather = function (_React$Component4) {
           { className: 'container' },
           _react2.default.createElement(
             'div',
-            { className: 'row' },
+            { className: 'row weather-current' },
             _react2.default.createElement(City, { name: this.state.city }),
             _react2.default.createElement(WeatherConditions, { temperature: this.state.temperature, description: this.state.description }),
             _react2.default.createElement(WeatherIcon, { iconId: this.state.iconId })
@@ -23295,6 +23196,12 @@ var CurrentWeather = function (_React$Component4) {
 }(_react2.default.Component);
 
 module.exports = CurrentWeather;
+
+/***/ }),
+/* 191 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

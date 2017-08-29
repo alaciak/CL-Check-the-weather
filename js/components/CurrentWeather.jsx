@@ -4,15 +4,15 @@ import ReactDOM from 'react-dom';
 class City extends React.Component {
 
   render() {
-    return <div>{ this.props.name }</div>
+    return <div className='col-4 weather-current_city'>{ this.props.name }</div>
   }
 }
 class WeatherConditions extends React.Component {
 
   render() {
-    return <div>
-      <p>{ this.props.temperature }</p>
-      <p>{ this.props.description }</p>
+    return <div className='col-4'>
+      <p className='weather-current_temperature'>{ this.props.temperature } &#8451; </p>
+      <p className='weather-current_description'>{ this.props.description }</p>
     </div>
   }
 }
@@ -20,7 +20,7 @@ class WeatherConditions extends React.Component {
 class WeatherIcon extends React.Component {
 
   render() {
-    return <div style={{ backgroundImage: `url(https://openweathermap.org/img/w/${this.props.iconId}.png)`, height: '100px' }}></div>
+    return <div className='col-4 weather-current_icon'><img src={'https://openweathermap.org/img/w/'+ this.props.iconId +'.png'}></img></div>
   }
 }
 
@@ -34,29 +34,26 @@ class CurrentWeather extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/' + this.state.query)
-    .then(resp => resp.json())
-    .then(data => {
+    fetch('http://localhost:3000/' + this.state.query).then(resp => resp.json()).then(data => {
       console.log(data.weather[0].icon);
       this.setState({
         city: data.name,
-        temperature: data.main.temp,
+        temperature: Math.ceil(data.main.temp),
         description: data.weather[0].description,
         iconId: data.weather[0].icon,
-        loading: false
-      });
+        loading: false});
     });
   }
 
   render() {
-    if(this.state.loading) {
+    if (this.state.loading) {
       return null
-    } else {      
+    } else {
       return <div className='container'>
-        <div className='row'>
-          <City name={ this.state.city }/>
-          <WeatherConditions temperature={ this.state.temperature } description={ this.state.description }/>
-          <WeatherIcon iconId={ this.state.iconId }/>
+        <div className='row weather-current'>
+          <City name={this.state.city}/>
+          <WeatherConditions temperature={this.state.temperature} description={this.state.description}/>
+          <WeatherIcon iconId={this.state.iconId}/>
         </div>
       </div>
     }

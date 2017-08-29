@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './Header.jsx';
 import CurrentWeather from './CurrentWeather.jsx';
-
+import '../../scss/style.scss';
 
 class App extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ class App extends React.Component {
 
       }
     }
-    
+
   render() {
     return
   }

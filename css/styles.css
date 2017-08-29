@@ -19,7 +19,7 @@ canvas {
 
 .container {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1000px;
   width: 100%;
 }
 
@@ -92,40 +92,106 @@ body {
   background-image: url(../img/background_main.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100vh;
+  font-size: 12px;
+}
+
+@media (min-width: 480px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 24px;
+  }
 }
 
 header {
-  margin: 3rem;
+  margin: 2em;
   background-color: #fff;
   border-radius: 5px;
 }
 
 .menu {
   float: right;
-  padding: 1rem;
+  padding: .5em;
+  height: 100%;
 }
 
 .menu span {
   background-color: #494649;
   display: block;
-  height: .15rem;
-  margin: .4rem;
+  height: .15em;
+  margin: .5em;
   width: 100%;
 }
 
 input[type=text] {
-  width: 100%;
-  padding: 1rem;
+  padding: .6em;
   border: 0;
   display: block;
-  font-size: 1.5rem;
+  font-size: 1.5em;
   color: #a09aa0;
   font-family: "Nunito", sans-sefif;
+  margin: 5px;
 }
 
 .search-icon {
-  height: 2.5rem;
+  height: 4em;
   background: url(../img/loupe.jpg) no-repeat center/contain;
-  margin: 10px 0;
+  margin: .2em 0;
   opacity: .8;
+}
+
+.weather-current {
+  background: #000;
+  opacity: .8;
+}
+
+.weather-current_temperature {
+  color: #e6ebef;
+  font-size: 2.5em;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.weather-current_city {
+  color: #e6ebef;
+  font-size: 2em;
+  padding: .5em;
+}
+
+@media (min-width: 768px) {
+  .weather-current_city {
+    padding: 1em;
+  }
+}
+
+.weather-current_description {
+  color: #e6ebef;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+.weather-current_icon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.weather-current_icon img {
+  height: 20vh;
+}
+
+@media (min-width: 768px) {
+  .weather-current_icon img {
+    height: 30vh;
+  }
 }
