@@ -47,7 +47,6 @@ class WeatherForecast extends React.Component {
         }
         throw new TypeError("Error");
       }).then(data => {
-        console.log(data);
         let day1 = [];
         let day2 = [];
         let day3= [];

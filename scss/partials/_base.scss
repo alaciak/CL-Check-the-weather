@@ -154,16 +154,31 @@ input[type=text] {
 }
 
 .my-locations {
-  background: map-get($color-fonts, highlight);
-  border-radius: 5px;
-  color: map-get($color-fonts, menu);
   text-transform: uppercase;
   font-weight: bold;
-  height: 7vh;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 1em 0;
+  div {
+    color: map-get($color-fonts, menu);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+    border-radius: 5px;
+    @media (min-width: 768px) {
+      height: 10vh;
+    }
+  }
+  div:first-of-type {
+    background: map-get($color-fonts, highlight);
+    margin-right: 1em;
+  }
+  div:nth-of-type(2) {
+    background: map-get($color-background, button);
+    margin-left: 1em;
+  }
 }
 
 footer {

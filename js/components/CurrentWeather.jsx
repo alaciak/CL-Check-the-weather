@@ -47,7 +47,6 @@ class CurrentWeather extends React.Component {
         }
         throw new TypeError("Oops, we haven't got JSON!");
       }).then(data => {
-        console.log(data);
         this.setState({
           city: data.name,
           temperature: Math.ceil(data.main.temp),
@@ -57,7 +56,6 @@ class CurrentWeather extends React.Component {
         });
       })
       .catch(function(error) { console.log(error); });
-
     }
   }
 

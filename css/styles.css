@@ -266,16 +266,37 @@ input[type=text] {
 }
 
 .my-locations {
-  background: #5789db;
-  border-radius: 5px;
-  color: #e6ebef;
   text-transform: uppercase;
   font-weight: bold;
-  height: 7vh;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 1em 0;
+}
+
+.my-locations div {
+  color: #e6ebef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 7vh;
+  border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  .my-locations div {
+    height: 10vh;
+  }
+}
+
+.my-locations div:first-of-type {
+  background: #5789db;
+  margin-right: 1em;
+}
+
+.my-locations div:nth-of-type(2) {
+  background: #081a38;
+  margin-left: 1em;
 }
 
 footer {
