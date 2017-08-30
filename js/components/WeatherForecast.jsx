@@ -35,17 +35,10 @@ class WeatherForecast extends React.Component {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   }
 
-  sortBiggest(a, b) {
-      return b - a;
-    }
-    sortLowest(a, b) {
-      return a - b;
-    }
-
   getWeather = query => {
     if(query != '') {
-      // const baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
-      const baseUrl = 'http://localhost:3000/';
+      const baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
+      // const baseUrl = 'http://localhost:3000/'
       fetch(baseUrl + query).then(resp => {
         const contentType = resp.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) {
@@ -53,36 +46,37 @@ class WeatherForecast extends React.Component {
         }
         throw new TypeError("Error");
       }).then(data => {
+        console.log(data);
+        console.log(data);
         let tempsMin1 = [];
         let tempsMax1  = [];
         let tempsMin2 = [];
         let tempsMax2  = [];
         let tempsMin3 = [];
         let tempsMax3  = [];
-        console.log(tempsMin1);
-        console.log(tempsMax1);
+
 
         for(let i  = 0; i < data.list.length-32; i++) {
           tempsMin1.push(parseInt(data.list[i].main.temp_min));
           tempsMax1.push(parseInt(data.list[i].main.temp_max));
         }
-        tempsMax1.sort(this.sortBiggest());
-        tempsMin1.sort(this.sortLowest());
+        tempsMax1.sort((a, b) => b - a);
+        tempsMin1.sort((a, b) => a - b);
 
         for(let i  = 8; i < data.list.length-24; i++) {
           tempsMin2.push(parseInt(data.list[i].main.temp_min));
           tempsMax2.push(parseInt(data.list[i].main.temp_max));
         }
-        tempsMax2.sort(this.sortBiggest());
-        tempsMin2.sort(this.sortLowest());
+        tempsMax2.sort((a, b) => b - a);
+        tempsMin2.sort((a, b) => a - b);
 
-        for(let i  = 16; i < data.list.length - 14; i++) {
+        for(let i  = 16; i < data.list.length - 16; i++) {
           tempsMin3.push(parseInt(data.list[i].main.temp_min));
           tempsMax3.push(parseInt(data.list[i].main.temp_max));
         }
 
-        tempsMax3.sort(this.sortBiggest());
-        tempsMin3.sort(this.sortLowest());
+       tempsMax3.sort((a, b) => b - a);
+       tempsMin3.sort((a, b) => a - b);
 
 
         this.setState({

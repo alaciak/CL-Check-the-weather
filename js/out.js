@@ -10294,6 +10294,7 @@ var App = function (_React$Component) {
         'div',
         null,
         _react2.default.createElement(_Header2.default, { onChangeLocation: this.handleChangeLocation }),
+        _react2.default.createElement(_CurrentWeather2.default, { query: this.state.query }),
         _react2.default.createElement(_WeatherForecast2.default, { query: this.state.query })
       );
     }
@@ -23243,7 +23244,7 @@ var CurrentWeather = function (_React$Component4) {
 
     _this4.getWeather = function (query) {
       if (query != '') {
-        // const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
+        var baseUrl = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
         // const baseUrl = 'http://localhost:3000/';
         fetch(baseUrl + query).then(function (resp) {
           var contentType = resp.headers.get("content-type");
@@ -23418,8 +23419,8 @@ var WeatherForecast = function (_React$Component4) {
 
     _this4.getWeather = function (query) {
       if (query != '') {
-        // const baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
-        var baseUrl = 'http://localhost:3000/';
+        var baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
+        // const baseUrl = 'http://localhost:3000/'
         fetch(baseUrl + query).then(function (resp) {
           var contentType = resp.headers.get("content-type");
           if (contentType && contentType.includes("application/json")) {
@@ -23427,36 +23428,48 @@ var WeatherForecast = function (_React$Component4) {
           }
           throw new TypeError("Error");
         }).then(function (data) {
+          console.log(data);
+          console.log(data);
           var tempsMin1 = [];
           var tempsMax1 = [];
           var tempsMin2 = [];
           var tempsMax2 = [];
           var tempsMin3 = [];
           var tempsMax3 = [];
-          console.log(tempsMin1);
-          console.log(tempsMax1);
 
           for (var i = 0; i < data.list.length - 32; i++) {
             tempsMin1.push(parseInt(data.list[i].main.temp_min));
             tempsMax1.push(parseInt(data.list[i].main.temp_max));
           }
-          tempsMax1.sort(_this4.sortBiggest());
-          tempsMin1.sort(_this4.sortLowest());
+          tempsMax1.sort(function (a, b) {
+            return b - a;
+          });
+          tempsMin1.sort(function (a, b) {
+            return a - b;
+          });
 
           for (var _i = 8; _i < data.list.length - 24; _i++) {
             tempsMin2.push(parseInt(data.list[_i].main.temp_min));
             tempsMax2.push(parseInt(data.list[_i].main.temp_max));
           }
-          tempsMax2.sort(_this4.sortBiggest());
-          tempsMin2.sort(_this4.sortLowest());
+          tempsMax2.sort(function (a, b) {
+            return b - a;
+          });
+          tempsMin2.sort(function (a, b) {
+            return a - b;
+          });
 
-          for (var _i2 = 16; _i2 < data.list.length - 14; _i2++) {
+          for (var _i2 = 16; _i2 < data.list.length - 16; _i2++) {
             tempsMin3.push(parseInt(data.list[_i2].main.temp_min));
             tempsMax3.push(parseInt(data.list[_i2].main.temp_max));
           }
 
-          tempsMax3.sort(_this4.sortBiggest());
-          tempsMin3.sort(_this4.sortLowest());
+          tempsMax3.sort(function (a, b) {
+            return b - a;
+          });
+          tempsMin3.sort(function (a, b) {
+            return a - b;
+          });
 
           _this4.setState({
             tempMin1: Math.ceil(tempsMin1[0]),
@@ -23488,16 +23501,6 @@ var WeatherForecast = function (_React$Component4) {
   }
 
   _createClass(WeatherForecast, [{
-    key: 'sortBiggest',
-    value: function sortBiggest(a, b) {
-      return b - a;
-    }
-  }, {
-    key: 'sortLowest',
-    value: function sortLowest(a, b) {
-      return a - b;
-    }
-  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.getWeather(this.props.query);
