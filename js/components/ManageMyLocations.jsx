@@ -5,13 +5,16 @@ import {
   IndexLink,
 } from 'react-router';
 
-
-
 class ManageMyLocations extends React.Component {
 
+
 handleAddLocation = event => {
-  if(typeof this.props.onAddLocation === 'function') {
-    this.props.onAddLocation(event.target.value);
+  if(this.props.location.length > 0) {
+    let myLocations = JSON.parse(localStorage.getItem('locations')) || [];
+    if(myLocations.indexOf(this.props.location) === -1) {
+      let newLocations = [this.props.location,...myLocations];
+      localStorage.setItem('locations', JSON.stringify(newLocations));
+    }
   }
 }
 

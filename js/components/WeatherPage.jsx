@@ -26,7 +26,7 @@ class WeatherPage extends React.Component {
     return <div>
       <Header onChangeLocation={ this.handleChangeLocation }/>
       <CurrentWeather query={ this.state.query } />
-      <ManageMyLocations />
+      <ManageMyLocations location={ this.state.query }/>
       <WeatherForecast query={ this.state.query } />
     </div>
   }
