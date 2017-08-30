@@ -12423,18 +12423,62 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var MyLocations = function (_React$Component) {
-  _inherits(MyLocations, _React$Component);
+var MyLocation = function (_React$Component) {
+  _inherits(MyLocation, _React$Component);
+
+  function MyLocation() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, MyLocation);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MyLocation.__proto__ || Object.getPrototypeOf(MyLocation)).call.apply(_ref, [this].concat(args))), _this), _this.handleOnClick = function (event) {
+      if (typeof _this.props.onChangeLocation === 'function') {
+        _this.props.onChangeLocation(_this.props.text);
+      }
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(MyLocation, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'li',
+        null,
+        _react2.default.createElement(
+          'span',
+          { onClick: this.handleOnClick },
+          this.props.text
+        ),
+        _react2.default.createElement(
+          'span',
+          { className: 'remove-location' },
+          'X'
+        )
+      );
+    }
+  }]);
+
+  return MyLocation;
+}(_react2.default.Component);
+
+var MyLocations = function (_React$Component2) {
+  _inherits(MyLocations, _React$Component2);
 
   function MyLocations(props) {
     _classCallCheck(this, MyLocations);
 
-    var _this = _possibleConstructorReturn(this, (MyLocations.__proto__ || Object.getPrototypeOf(MyLocations)).call(this, props));
+    var _this2 = _possibleConstructorReturn(this, (MyLocations.__proto__ || Object.getPrototypeOf(MyLocations)).call(this, props));
 
-    _this.state = {
+    _this2.state = {
       myLocations: []
     };
-    return _this;
+    return _this2;
   }
 
   _createClass(MyLocations, [{
@@ -12445,56 +12489,58 @@ var MyLocations = function (_React$Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.setState({
-        myLocations: this.getMyLocations()
-      });
+      this.setState({ myLocations: this.getMyLocations() });
     }
   }, {
     key: 'render',
     value: function render() {
+      var _this3 = this;
+
       if (this.state.myLocations.length < 1) {
         return _react2.default.createElement(
           'div',
-          null,
+          { className: 'col-12' },
+          _react2.default.createElement(_Nav2.default, null),
           _react2.default.createElement(
             'div',
-            null,
+            { className: 'no-locations-alert' },
             'You have no locations added yet'
           ),
           _react2.default.createElement(
             'div',
-            null,
+            { className: 'col-3 link-main' },
             _react2.default.createElement(
               _reactRouter.Link,
-              { to: '/' },
+              { className: 'link-main', to: '/' },
               'Back to the main page'
             )
           )
         );
       } else {
         var locations = this.state.myLocations.map(function (el, index) {
-          return _react2.default.createElement(
-            'li',
-            { key: index },
-            el
-          );
+          return _react2.default.createElement(MyLocation, { key: index, text: el, onChangeLocation: _this3.props.onChangeLocation });
         });
         return _react2.default.createElement(
           'div',
-          null,
+          { className: 'col-12' },
           _react2.default.createElement(_Nav2.default, null),
           _react2.default.createElement(
             'ul',
-            null,
+            { className: 'locations-list' },
+            _react2.default.createElement(
+              'p',
+              null,
+              'My Locations'
+            ),
             locations
           ),
           _react2.default.createElement(
             'div',
-            null,
+            { className: 'link-main' },
             _react2.default.createElement(
               _reactRouter.Link,
               { to: '/' },
-              'Back to the main page'
+              '<< back to the main page'
             )
           )
         );
@@ -26193,6 +26239,7 @@ var WeatherForecast = function (_React$Component4) {
           }
           throw new TypeError("Error");
         }).then(function (data) {
+          console.log(data);
           var day1 = [];
           var day2 = [];
           var day3 = [];

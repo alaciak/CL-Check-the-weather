@@ -16,7 +16,6 @@ body {
 
 nav {
   background: #000;
-  opacity: .9;
   height: 3em;
   color: map-get($color-fonts, menu);
   display: flex;
@@ -196,5 +195,52 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+.locations-list {
+  background: #000;
+  opacity: .8;
+  height: 80vh;
+  width: 100%;
+  padding: 2em;
+  li {
+    width: 30%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: map-get($color-fonts, menu);
+    margin-top: 2em;
+    height: 5vh;
+    background: map-get($color-fonts, highlight);
+  }
+
+  .remove-location {
+    color: #000;
+    font-size: 1.5em;
+  }
+  p {
+    color:map-get($color-fonts, menu);
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 1.5em;
+    border-bottom: 2px solid map-get($color-fonts, menu);
+    padding-bottom: .5em;
+  }
+}
+
+.link-main {
+  height: 5vh;
+  background: map-get($color-background, button);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  a {
+    text-decoration: none;
+    color: map-get($color-fonts, menu);
   }
 }

@@ -110,7 +110,6 @@ body {
 
 nav {
   background: #000;
-  opacity: .9;
   height: 3em;
   color: #e6ebef;
   display: flex;
@@ -316,4 +315,54 @@ footer p {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.locations-list {
+  background: #000;
+  opacity: .8;
+  height: 80vh;
+  width: 100%;
+  padding: 2em;
+}
+
+.locations-list li {
+  width: 30%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #e6ebef;
+  margin-top: 2em;
+  height: 5vh;
+  background: #5789db;
+}
+
+.locations-list .remove-location {
+  color: #000;
+  font-size: 1.5em;
+}
+
+.locations-list p {
+  color: #e6ebef;
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 1.5em;
+  border-bottom: 2px solid #e6ebef;
+  padding-bottom: .5em;
+}
+
+.link-main {
+  height: 5vh;
+  background: #081a38;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.link-main a {
+  text-decoration: none;
+  color: #e6ebef;
 }
