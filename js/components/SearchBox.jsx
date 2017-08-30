@@ -32,7 +32,7 @@ class SearchBox extends React.Component {
   render() {
     return <div>
       <input className='col-10' type='text' value={ this.state.text } onChange={ this.handleOnChangeSearch } onClick={ this.handleOnClickSearch } ></input>
-      <div className='search-icon col-1' onClick={ this.handleOnClick }></div>
+      <div className='search-icon col-1' onClick={ this.handleOnClick } tabIndex="2"></div>
     </div>;
   }
 }

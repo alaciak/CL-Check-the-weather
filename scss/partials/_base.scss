@@ -15,23 +15,47 @@ body {
 }
 
 header {
-  margin: 2em;
+  // margin: 2em;
+  // background-color: map-get($color-background, header);
+  // border-radius: 5px;
+}
+
+nav {
+  background: #000;
+  opacity: .9;
+  height: 3em;
+  color: map-get($color-fonts, menu);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    margin: 1em;
+    font-size: 1.5em;
+  }
+  span {
+    color: map-get($color-fonts, highlight);
+    font-weight: bold;
+  }
+}
+
+.search-box {
+  margin: 2em auto;
   background-color: map-get($color-background, header);
   border-radius: 5px;
 }
-
-.menu {
-  float: right;
-  padding: .5em;
-  height: 100%;
-  span {
-    background-color:  map-get($color-fonts, search);
-    display: block;
-    height: .15em;
-    margin: .5em;
-    width: 100%;
-  }
-}
+//
+// .menu {
+//   float: right;
+//   padding: .5em;
+//   height: 100%;
+//   span {
+//     background-color:  map-get($color-fonts, search);
+//     display: block;
+//     height: .15em;
+//     margin: .5em;
+//     width: 100%;
+//   }
+// }
 
 input[type=text] {
     padding: .6em;
@@ -90,6 +114,60 @@ input[type=text] {
     height: 20vh;
     @media (min-width: 768px) {
       height: 30vh;
+    }
+  }
+}
+
+.weather-forecast {
+  background: #000;
+  opacity: .8;
+  margin-top: 1em;
+  .forecast-heading {
+    color: map-get($color-fonts, highlight);
+    font-size: 1.5em;
+    margin-bottom: .5em;
+    padding: .5em;
+    font-weight: bold;
+    text-transform: capitalize;
+    word-spacing: .3em;
+    letter-spacing: 2px;
+    border-bottom: 2px solid map-get($color-fonts, menu);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+.weather-forecast_day {
+  display: flex;
+  justify-content: center;
+  color: map-get($color-fonts, menu);
+  font-size: 1.5em;
+  padding: .3em 0;
+  overflow: hidden;
+  white-space: nowrap;
+  @media (min-width: 768px) {
+    padding: .5em;
+  }
+}
+
+.weather-forecast_temperature {
+  color: map-get($color-fonts, menu);
+  font-size: 1.25em;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  justify-content:center;
+  word-spacing: 1.5em;
+  margin-bottom: 1em;
+}
+
+.weather-forecast_icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    height: 20vh;
+    @media (min-width: 768px) {
+      height: 20vh;
     }
   }
 }
