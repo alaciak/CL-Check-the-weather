@@ -30,16 +30,16 @@ class WeatherForecast extends React.Component {
     super(props);
     this.state = {
       dayOfWeek: '',
-      loading: true
+      loading: true,
+      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     }
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   }
 
 
   getWeather = query => {
     if(query != '') {
-      // const baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
-      const baseUrl = 'http://localhost:3000/'
+      const baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
+      // const baseUrl = 'http://localhost:3000/'
       fetch(baseUrl + query).then(resp => {
         const contentType = resp.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) {
@@ -47,6 +47,7 @@ class WeatherForecast extends React.Component {
         }
         throw new TypeError("Error");
       }).then(data => {
+        console.log(data);
         let day1 = [];
         let day2 = [];
         let day3= [];
@@ -60,7 +61,7 @@ class WeatherForecast extends React.Component {
         let tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         let dayAfterTomorrow = new Date();
-        dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2)
+        dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
 
         for(let i = 0; i < data.list.length; i++) {
           if(String(currentDay).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
@@ -100,15 +101,15 @@ class WeatherForecast extends React.Component {
           tempMin1: Math.ceil(tempsMin1[0]),
           tempMax1: Math.ceil(tempsMax1[0]),
           iconId1: data.list[0].weather[0].icon,
-          dayName1: data.list[0].dt_txt.slice(0, 11),
+          dayName1: this.state.days[new Date(data.list[0].dt_txt).getDay()],
           tempMin2: Math.ceil(tempsMin2[0]),
           tempMax2: Math.ceil(tempsMax2[0]),
           iconId2: data.list[(day1.length+ 4)].weather[0].icon,
-          dayName2: data.list[(day1.length + 4)].dt_txt.slice(0, 11),
+          dayName2: this.state.days[new Date(data.list[(day1.length + 4)].dt_txt).getDay()],
           tempMin3: Math.ceil(tempsMin3[0]),
           tempMax3: Math.ceil(tempsMax3[0]),
           iconId3: data.list[(day1.length + 12)].weather[0].icon,
-          dayName3: data.list[(day1.length + 12)].dt_txt.slice(0, 11),
+          dayName3: this.state.days[new Date(data.list[(day1.length + 12)].dt_txt).getDay()],
           loading: false
         });
       })
@@ -134,19 +135,19 @@ componentWillReceiveProps(nextProps) {
           <div className='row weather-forecast'>
             <p className='forecast-heading'>3 day weather forecast</p>
             <div className='col-4'>
-            <WeatherForecastDay dayName={ this.state.dayName1 }/>
-            <WeatherForecastIcons iconId={ this.state.iconId1 }/>
-            <WeatherForecastConditions tempMin={ this.state.tempMin1 } tempMax={ this.state.tempMax1 } />
+              <WeatherForecastDay dayName={ this.state.dayName1 }/>
+              <WeatherForecastIcons iconId={ this.state.iconId1 }/>
+              <WeatherForecastConditions tempMin={ this.state.tempMin1 } tempMax={ this.state.tempMax1 } />
             </div>
             <div className='col-4'>
-            <WeatherForecastDay dayName={ this.state.dayName2 }/>
-            <WeatherForecastIcons iconId={ this.state.iconId2 }/>
-            <WeatherForecastConditions tempMin={ this.state.tempMin2 } tempMax={ this.state.tempMax2 } />
+              <WeatherForecastDay dayName={ this.state.dayName2 }/>
+              <WeatherForecastIcons iconId={ this.state.iconId2 }/>
+              <WeatherForecastConditions tempMin={ this.state.tempMin2 } tempMax={ this.state.tempMax2 } />
             </div>
             <div className='col-4'>
-            <WeatherForecastDay dayName={ this.state.dayName3 }/>
-            <WeatherForecastIcons iconId={ this.state.iconId3 }/>
-            <WeatherForecastConditions tempMin={ this.state.tempMin3 } tempMax={ this.state.tempMax3 } />
+              <WeatherForecastDay dayName={ this.state.dayName3 }/>
+              <WeatherForecastIcons iconId={ this.state.iconId3 }/>
+              <WeatherForecastConditions tempMin={ this.state.tempMin3 } tempMax={ this.state.tempMax3 } />
             </div>
           </div>
         </div>

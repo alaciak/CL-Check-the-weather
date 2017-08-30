@@ -4,6 +4,7 @@ import Header from './Header.jsx';
 import CurrentWeather from './CurrentWeather.jsx';
 import WeatherForecast from './WeatherForecast.jsx';
 import ManageMyLocations from './ManageMyLocations.jsx';
+import MyLocations from './MyLocations.jsx';
 import '../../scss/style.scss';
 
 class App extends React.Component {
@@ -20,14 +21,17 @@ class App extends React.Component {
     });
   }
 
+
   render() {
     return <div>
-      <Header onChangeLocation = { this.handleChangeLocation }/>
+      <Header onChangeLocation={ this.handleChangeLocation }/>
+      <CurrentWeather query={ this.state.query } />
       <ManageMyLocations />
       <WeatherForecast query={ this.state.query } />
     </div>
   }
 }
+
 
 document.addEventListener('DOMContentLoaded', function(){
 
