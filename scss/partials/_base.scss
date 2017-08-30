@@ -14,12 +14,6 @@ body {
   }
 }
 
-header {
-  // margin: 2em;
-  // background-color: map-get($color-background, header);
-  // border-radius: 5px;
-}
-
 nav {
   background: #000;
   opacity: .9;
@@ -43,19 +37,6 @@ nav {
   background-color: map-get($color-background, header);
   border-radius: 5px;
 }
-//
-// .menu {
-//   float: right;
-//   padding: .5em;
-//   height: 100%;
-//   span {
-//     background-color:  map-get($color-fonts, search);
-//     display: block;
-//     height: .15em;
-//     margin: .5em;
-//     width: 100%;
-//   }
-// }
 
 input[type=text] {
     padding: .6em;
@@ -169,5 +150,36 @@ input[type=text] {
     @media (min-width: 768px) {
       height: 20vh;
     }
+  }
+}
+
+.my-locations {
+  background: map-get($color-fonts, highlight);
+  border-radius: 5px;
+  color: map-get($color-fonts, menu);
+  text-transform: uppercase;
+  font-weight: bold;
+  height: 7vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 0;
+}
+
+footer {
+  background: #000;
+  opacity: .6;
+  height: 2em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    padding: 1em;
+    font-size: .75em;
+    color: map-get($color-fonts, menu);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

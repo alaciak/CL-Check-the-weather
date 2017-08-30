@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Header from './Header.jsx';
 import CurrentWeather from './CurrentWeather.jsx';
 import WeatherForecast from './WeatherForecast.jsx';
+import ManageMyLocations from './ManageMyLocations.jsx';
 import '../../scss/style.scss';
 
 class App extends React.Component {
@@ -23,6 +24,7 @@ class App extends React.Component {
     return <div>
       <Header onChangeLocation = { this.handleChangeLocation }/>
       <CurrentWeather query={ this.state.query } />
+      <ManageMyLocations />
       <WeatherForecast query={ this.state.query } />
     </div>
   }

@@ -264,3 +264,35 @@ input[type=text] {
     height: 20vh;
   }
 }
+
+.my-locations {
+  background: #5789db;
+  border-radius: 5px;
+  color: #e6ebef;
+  text-transform: uppercase;
+  font-weight: bold;
+  height: 7vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 0;
+}
+
+footer {
+  background: #000;
+  opacity: .6;
+  height: 2em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer p {
+  padding: 1em;
+  font-size: .75em;
+  color: #e6ebef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
