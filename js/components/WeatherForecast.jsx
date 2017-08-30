@@ -35,10 +35,11 @@ class WeatherForecast extends React.Component {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   }
 
+
   getWeather = query => {
     if(query != '') {
-      const baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
-      // const baseUrl = 'http://localhost:3000/'
+      // const baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
+      const baseUrl = 'http://localhost:3000/'
       fetch(baseUrl + query).then(resp => {
         const contentType = resp.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) {
@@ -46,38 +47,54 @@ class WeatherForecast extends React.Component {
         }
         throw new TypeError("Error");
       }).then(data => {
-        console.log(data);
-        console.log(data);
+        let day1 = [];
+        let day2 = [];
+        let day3= [];
         let tempsMin1 = [];
         let tempsMax1  = [];
         let tempsMin2 = [];
         let tempsMax2  = [];
         let tempsMin3 = [];
         let tempsMax3  = [];
+        let currentDay = new Date();
+        let tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        let dayAfterTomorrow = new Date();
+        dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2)
 
+        for(let i = 0; i < data.list.length; i++) {
+          if(String(currentDay).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
+            day1.push(data.list[i].dt_txt);
+          }
+          if(String(tomorrow).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
+            day2.push(data.list[i].dt_txt);
+          }
+          if(String(dayAfterTomorrow).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
+            day3.push(data.list[i].dt_txt);
+          }
+        }
 
-        for(let i  = 0; i < data.list.length-32; i++) {
+        for(let i  = 0; i < day1.length; i++) {
           tempsMin1.push(parseInt(data.list[i].main.temp_min));
           tempsMax1.push(parseInt(data.list[i].main.temp_max));
         }
         tempsMax1.sort((a, b) => b - a);
         tempsMin1.sort((a, b) => a - b);
 
-        for(let i  = 8; i < data.list.length-24; i++) {
+        for(let i  = (day1.length - 1); i < (day1.length + day2.length); i++) {
           tempsMin2.push(parseInt(data.list[i].main.temp_min));
           tempsMax2.push(parseInt(data.list[i].main.temp_max));
         }
         tempsMax2.sort((a, b) => b - a);
         tempsMin2.sort((a, b) => a - b);
 
-        for(let i  = 16; i < data.list.length - 16; i++) {
+        for(let i  = (day1.length + day2.length - 2); i < (day1.length + day2.length + day3.length); i++) {
           tempsMin3.push(parseInt(data.list[i].main.temp_min));
           tempsMax3.push(parseInt(data.list[i].main.temp_max));
         }
 
        tempsMax3.sort((a, b) => b - a);
        tempsMin3.sort((a, b) => a - b);
-
 
         this.setState({
           tempMin1: Math.ceil(tempsMin1[0]),
@@ -86,12 +103,12 @@ class WeatherForecast extends React.Component {
           dayName1: data.list[0].dt_txt.slice(0, 11),
           tempMin2: Math.ceil(tempsMin2[0]),
           tempMax2: Math.ceil(tempsMax2[0]),
-          iconId2: data.list[8].weather[0].icon,
-          dayName2: data.list[8].dt_txt.slice(0, 11),
+          iconId2: data.list[(day1.length+ 4)].weather[0].icon,
+          dayName2: data.list[(day1.length + 4)].dt_txt.slice(0, 11),
           tempMin3: Math.ceil(tempsMin3[0]),
           tempMax3: Math.ceil(tempsMax3[0]),
-          iconId3: data.list[18].weather[0].icon,
-          dayName3: data.list[18].dt_txt.slice(0, 11),
+          iconId3: data.list[(day1.length + 12)].weather[0].icon,
+          dayName3: data.list[(day1.length + 12)].dt_txt.slice(0, 11),
           loading: false
         });
       })

@@ -10257,7 +10257,7 @@ var _WeatherForecast = __webpack_require__(190);
 
 var _WeatherForecast2 = _interopRequireDefault(_WeatherForecast);
 
-var _ManageMyLocations = __webpack_require__(199);
+var _ManageMyLocations = __webpack_require__(191);
 
 var _ManageMyLocations2 = _interopRequireDefault(_ManageMyLocations);
 
@@ -10298,7 +10298,6 @@ var App = function (_React$Component) {
         'div',
         null,
         _react2.default.createElement(_Header2.default, { onChangeLocation: this.handleChangeLocation }),
-        _react2.default.createElement(_CurrentWeather2.default, { query: this.state.query }),
         _react2.default.createElement(_ManageMyLocations2.default, null),
         _react2.default.createElement(_WeatherForecast2.default, { query: this.state.query })
       );
@@ -23249,7 +23248,7 @@ var CurrentWeather = function (_React$Component4) {
 
     _this4.getWeather = function (query) {
       if (query != '') {
-        var baseUrl = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
+        // const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
         // const baseUrl = 'http://localhost:3000/';
         fetch(baseUrl + query).then(function (resp) {
           var contentType = resp.headers.get("content-type");
@@ -23424,8 +23423,8 @@ var WeatherForecast = function (_React$Component4) {
 
     _this4.getWeather = function (query) {
       if (query != '') {
-        var baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
-        // const baseUrl = 'http://localhost:3000/'
+        // const baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
+        var baseUrl = 'http://localhost:3000/';
         fetch(baseUrl + query).then(function (resp) {
           var contentType = resp.headers.get("content-type");
           if (contentType && contentType.includes("application/json")) {
@@ -23433,18 +23432,36 @@ var WeatherForecast = function (_React$Component4) {
           }
           throw new TypeError("Error");
         }).then(function (data) {
-          console.log(data);
-          console.log(data);
+          var day1 = [];
+          var day2 = [];
+          var day3 = [];
           var tempsMin1 = [];
           var tempsMax1 = [];
           var tempsMin2 = [];
           var tempsMax2 = [];
           var tempsMin3 = [];
           var tempsMax3 = [];
+          var currentDay = new Date();
+          var tomorrow = new Date();
+          tomorrow.setDate(tomorrow.getDate() + 1);
+          var dayAfterTomorrow = new Date();
+          dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
 
-          for (var i = 0; i < data.list.length - 32; i++) {
-            tempsMin1.push(parseInt(data.list[i].main.temp_min));
-            tempsMax1.push(parseInt(data.list[i].main.temp_max));
+          for (var i = 0; i < data.list.length; i++) {
+            if (String(currentDay).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
+              day1.push(data.list[i].dt_txt);
+            }
+            if (String(tomorrow).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
+              day2.push(data.list[i].dt_txt);
+            }
+            if (String(dayAfterTomorrow).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
+              day3.push(data.list[i].dt_txt);
+            }
+          }
+
+          for (var _i = 0; _i < day1.length; _i++) {
+            tempsMin1.push(parseInt(data.list[_i].main.temp_min));
+            tempsMax1.push(parseInt(data.list[_i].main.temp_max));
           }
           tempsMax1.sort(function (a, b) {
             return b - a;
@@ -23453,9 +23470,9 @@ var WeatherForecast = function (_React$Component4) {
             return a - b;
           });
 
-          for (var _i = 8; _i < data.list.length - 24; _i++) {
-            tempsMin2.push(parseInt(data.list[_i].main.temp_min));
-            tempsMax2.push(parseInt(data.list[_i].main.temp_max));
+          for (var _i2 = day1.length - 1; _i2 < day1.length + day2.length; _i2++) {
+            tempsMin2.push(parseInt(data.list[_i2].main.temp_min));
+            tempsMax2.push(parseInt(data.list[_i2].main.temp_max));
           }
           tempsMax2.sort(function (a, b) {
             return b - a;
@@ -23464,9 +23481,9 @@ var WeatherForecast = function (_React$Component4) {
             return a - b;
           });
 
-          for (var _i2 = 16; _i2 < data.list.length - 16; _i2++) {
-            tempsMin3.push(parseInt(data.list[_i2].main.temp_min));
-            tempsMax3.push(parseInt(data.list[_i2].main.temp_max));
+          for (var _i3 = day1.length + day2.length - 2; _i3 < day1.length + day2.length + day3.length; _i3++) {
+            tempsMin3.push(parseInt(data.list[_i3].main.temp_min));
+            tempsMax3.push(parseInt(data.list[_i3].main.temp_max));
           }
 
           tempsMax3.sort(function (a, b) {
@@ -23483,12 +23500,12 @@ var WeatherForecast = function (_React$Component4) {
             dayName1: data.list[0].dt_txt.slice(0, 11),
             tempMin2: Math.ceil(tempsMin2[0]),
             tempMax2: Math.ceil(tempsMax2[0]),
-            iconId2: data.list[8].weather[0].icon,
-            dayName2: data.list[8].dt_txt.slice(0, 11),
+            iconId2: data.list[day1.length + 4].weather[0].icon,
+            dayName2: data.list[day1.length + 4].dt_txt.slice(0, 11),
             tempMin3: Math.ceil(tempsMin3[0]),
             tempMax3: Math.ceil(tempsMax3[0]),
-            iconId3: data.list[18].weather[0].icon,
-            dayName3: data.list[18].dt_txt.slice(0, 11),
+            iconId3: data.list[day1.length + 12].weather[0].icon,
+            dayName3: data.list[day1.length + 12].dt_txt.slice(0, 11),
             loading: false
           });
         }).catch(function (error) {
@@ -23569,20 +23586,7 @@ var WeatherForecast = function (_React$Component4) {
 module.exports = WeatherForecast;
 
 /***/ }),
-/* 191 */,
-/* 192 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 193 */,
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */,
-/* 198 */,
-/* 199 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23621,7 +23625,9 @@ var ManageMyLocations = function (_React$Component) {
     }
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ManageMyLocations.__proto__ || Object.getPrototypeOf(ManageMyLocations)).call.apply(_ref, [this].concat(args))), _this), _this.handleAddLocation = function (event) {
-      console.log('działa');
+      if (typeof _this.props.handleAddLocation === 'function') {
+        _this.props.onChangeLocation(_this.state.text);
+      }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -23652,6 +23658,12 @@ var ManageMyLocations = function (_React$Component) {
 }(_react2.default.Component);
 
 module.exports = ManageMyLocations;
+
+/***/ }),
+/* 192 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

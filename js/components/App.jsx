@@ -23,7 +23,6 @@ class App extends React.Component {
   render() {
     return <div>
       <Header onChangeLocation = { this.handleChangeLocation }/>
-      <CurrentWeather query={ this.state.query } />
       <ManageMyLocations />
       <WeatherForecast query={ this.state.query } />
     </div>
