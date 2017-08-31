@@ -7,11 +7,6 @@
     @extend %clearfix;
     width: 100%;
 
-    // [class*='col'] {
-    //   width: 100%;
-    //
-    // }
-
       @for $i from 1 through $columns {
         .col-#{$i} {
           float: left;

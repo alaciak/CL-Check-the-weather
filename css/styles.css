@@ -92,8 +92,8 @@ body {
   background-image: url(../img/background_main.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
   font-size: 12px;
+  height: 1200px;
 }
 
 @media (min-width: 480px) {
@@ -134,7 +134,7 @@ nav span {
 }
 
 input[type=text] {
-  padding: .6em;
+  padding: 0.6em;
   border: 0;
   display: block;
   font-size: 1.5em;
@@ -146,13 +146,13 @@ input[type=text] {
 .search-icon {
   height: 4em;
   background: url(../img/loupe.jpg) no-repeat center/contain;
-  margin: .2em 0;
-  opacity: .8;
+  margin: 0.2em 0;
+  opacity: 0.8;
 }
 
 .weather-current {
   background: #000;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .weather-current_temperature {
@@ -168,7 +168,7 @@ input[type=text] {
 .weather-current_city {
   color: #e6ebef;
   font-size: 2em;
-  padding: .5em;
+  padding: 0.5em;
 }
 
 @media (min-width: 768px) {
@@ -203,18 +203,18 @@ input[type=text] {
 
 .weather-forecast {
   background: #000;
-  opacity: .8;
+  opacity: 0.8;
   margin-top: 1em;
 }
 
 .weather-forecast .forecast-heading {
   color: #5789db;
   font-size: 1.5em;
-  margin-bottom: .5em;
-  padding: .5em;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
   font-weight: bold;
   text-transform: capitalize;
-  word-spacing: .3em;
+  word-spacing: 0.3em;
   letter-spacing: 2px;
   border-bottom: 2px solid #e6ebef;
   overflow: hidden;
@@ -226,14 +226,14 @@ input[type=text] {
   justify-content: center;
   color: #e6ebef;
   font-size: 1.5em;
-  padding: .3em 0;
+  padding: 0.3em 0;
   overflow: hidden;
   white-space: nowrap;
 }
 
 @media (min-width: 768px) {
   .weather-forecast_day {
-    padding: .5em;
+    padding: 0.5em;
   }
 }
 
@@ -298,29 +298,10 @@ input[type=text] {
   margin-left: 1em;
 }
 
-footer {
-  background: #000;
-  opacity: .6;
-  height: 2em;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-footer p {
-  padding: 1em;
-  font-size: .75em;
-  color: #e6ebef;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .locations-list {
   background: #000;
-  opacity: .8;
-  height: 80vh;
+  opacity: 0.8;
+  height: 70vh;
   width: 100%;
   padding: 2em;
 }
@@ -331,7 +312,7 @@ footer p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 .5em;
+  padding: 0 0.5em;
   text-transform: uppercase;
   font-weight: bold;
   color: #e6ebef;
@@ -352,22 +333,19 @@ footer p {
   font-weight: bold;
   font-size: 1.5em;
   border-bottom: 2px solid #e6ebef;
-  padding-bottom: .5em;
+  padding-bottom: 0.5em;
   text-align: center;
 }
 
 .link-main {
-  height: 7vh;
-  background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5em;
-  word-spacing: .3em;
+  font-size: 1em;
+  margin-top: 3em;
 }
 
 .link-main a {
-  text-decoration: none;
   color: #e6ebef;
 }
 
@@ -378,5 +356,15 @@ footer p {
 
 .my-locations_check a {
   text-decoration: none;
+  color: #e6ebef;
+}
+
+.no-locations-message {
+  text-align: center;
+  height: 15vh;
+  font-size: 1.5em;
+  background: #000;
+  opacity: .8;
+  padding: 2em;
   color: #e6ebef;
 }

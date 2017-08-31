@@ -4,16 +4,16 @@ import {Link, IndexLink} from 'react-router';
 
 class MyLocation extends React.Component {
 
-handleOnClick = event => {
-  if(typeof this.props.onChangeLocation === 'function') {
-    this.props.onChangeLocation(this.props.text);
-  }
-}
+// handleOnClick = event => {
+//   if(typeof this.props.onChangeLocation === 'function') {
+//     this.props.onChangeLocation(this.props.text);
+//   }
+// }
 
 handleOnCLickRemoveLocation = event => {
-  let locations = JSON.parse(localStorage.getItem('locations'));
-  locations.splice(locations.indexOf(this.props.text), 1);
-  localStorage.setItem('locations', JSON.stringify(locations));
+  if(typeof this.props.onRemoveLocation ===  'function') {
+    this.props.onRemoveLocation(this.props.text);
+  }
 }
 
   render() {
@@ -40,26 +40,37 @@ class MyLocations extends React.Component {
     });
   }
 
+  onRemoveLocation = event => {
+    let locations = JSON.parse(localStorage.getItem('locations'));
+    locations.splice(locations.indexOf(this.props.text), 1);
+    localStorage.setItem('locations', JSON.stringify(locations));
+    this.setState({
+      myLocations: locations
+    })
+  }
+
   render() {
     if (this.state.myLocations.length < 1) {
       return <div className='col-12'>
         <Nav/>
-        <div className='no-locations-alert'>You have no locations added yet</div>
+        <div className='no-locations-message'>You have no locations added yet...</div>
         <div className='col-3 link-main'>
-          <Link className='link-main' to='/'>Back to the main page</Link>
+          <Link className='link-main' to='/'>&lt;&lt; back to the main page</Link>
         </div>
       </div>
     } else {
       let locations = this.state.myLocations.map((el, index) => {
-        return <MyLocation key={ index } text={ el } onChangeLocation={ this.props.onChangeLocation }/>
+        return <MyLocation key={ index } text={ el } onRemoveLocation={ this.onRemoveLocation }/>
       })
       return <div>
         <Nav/>
-        <ul className='locations-list'>
+        <div className='locations-list'>
+        <ul>
           <p>My Locations</p>{locations}</ul>
         <div className='link-main'>
           <Link to='/'>&lt;&lt; back to the main page</Link>
         </div>
+      </div>
       </div>
     }
   }

@@ -12437,16 +12437,18 @@ var MyLocation = function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MyLocation.__proto__ || Object.getPrototypeOf(MyLocation)).call.apply(_ref, [this].concat(args))), _this), _this.handleOnClick = function (event) {
-      if (typeof _this.props.onChangeLocation === 'function') {
-        _this.props.onChangeLocation(_this.props.text);
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MyLocation.__proto__ || Object.getPrototypeOf(MyLocation)).call.apply(_ref, [this].concat(args))), _this), _this.handleOnCLickRemoveLocation = function (event) {
+      if (typeof _this.props.onRemoveLocation === 'function') {
+        _this.props.onRemoveLocation(_this.props.text);
       }
-    }, _this.handleOnCLickRemoveLocation = function (event) {
-      var locations = JSON.parse(localStorage.getItem('locations'));
-      locations.splice(locations.indexOf(_this.props.text), 1);
-      localStorage.setItem('locations', JSON.stringify(locations));
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
+
+  // handleOnClick = event => {
+  //   if(typeof this.props.onChangeLocation === 'function') {
+  //     this.props.onChangeLocation(this.props.text);
+  //   }
+  // }
 
   _createClass(MyLocation, [{
     key: 'render',
@@ -12480,6 +12482,15 @@ var MyLocations = function (_React$Component2) {
 
     var _this2 = _possibleConstructorReturn(this, (MyLocations.__proto__ || Object.getPrototypeOf(MyLocations)).call(this, props));
 
+    _this2.onRemoveLocation = function (event) {
+      var locations = JSON.parse(localStorage.getItem('locations'));
+      locations.splice(locations.indexOf(_this2.props.text), 1);
+      localStorage.setItem('locations', JSON.stringify(locations));
+      _this2.setState({
+        myLocations: locations
+      });
+    };
+
     _this2.state = {
       myLocations: []
     };
@@ -12510,8 +12521,8 @@ var MyLocations = function (_React$Component2) {
           _react2.default.createElement(_Nav2.default, null),
           _react2.default.createElement(
             'div',
-            { className: 'no-locations-alert' },
-            'You have no locations added yet'
+            { className: 'no-locations-message' },
+            'You have no locations added yet...'
           ),
           _react2.default.createElement(
             'div',
@@ -12519,35 +12530,39 @@ var MyLocations = function (_React$Component2) {
             _react2.default.createElement(
               _reactRouter.Link,
               { className: 'link-main', to: '/' },
-              'Back to the main page'
+              '<< back to the main page'
             )
           )
         );
       } else {
         var locations = this.state.myLocations.map(function (el, index) {
-          return _react2.default.createElement(MyLocation, { key: index, text: el, onChangeLocation: _this3.props.onChangeLocation });
+          return _react2.default.createElement(MyLocation, { key: index, text: el, onRemoveLocation: _this3.onRemoveLocation });
         });
         return _react2.default.createElement(
           'div',
           null,
           _react2.default.createElement(_Nav2.default, null),
           _react2.default.createElement(
-            'ul',
+            'div',
             { className: 'locations-list' },
             _react2.default.createElement(
-              'p',
+              'ul',
               null,
-              'My Locations'
+              _react2.default.createElement(
+                'p',
+                null,
+                'My Locations'
+              ),
+              locations
             ),
-            locations
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'link-main' },
             _react2.default.createElement(
-              _reactRouter.Link,
-              { to: '/' },
-              '<< back to the main page'
+              'div',
+              { className: 'link-main' },
+              _react2.default.createElement(
+                _reactRouter.Link,
+                { to: '/' },
+                '<< back to the main page'
+              )
             )
           )
         );
@@ -26070,7 +26085,6 @@ var CurrentWeather = function (_React$Component4) {
     _this4.getWeather = function (query) {
       if (query != '') {
         var baseUrl = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
-        // const baseUrl = 'http://localhost:3000/';
         fetch(baseUrl + query).then(function (resp) {
           var contentType = resp.headers.get("content-type");
           if (contentType && contentType.includes("application/json")) {
@@ -26245,7 +26259,6 @@ var WeatherForecast = function (_React$Component4) {
     _this4.getWeather = function (query) {
       if (query != '') {
         var baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
-        // const baseUrl = 'http://localhost:3000/'
         fetch(baseUrl + query).then(function (resp) {
           var contentType = resp.headers.get("content-type");
           if (contentType && contentType.includes("application/json")) {
@@ -26253,7 +26266,6 @@ var WeatherForecast = function (_React$Component4) {
           }
           throw new TypeError("Error");
         }).then(function (data) {
-          console.log(data);
           var day1 = [];
           var day2 = [];
           var day3 = [];

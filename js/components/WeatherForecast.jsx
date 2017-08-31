@@ -39,7 +39,6 @@ class WeatherForecast extends React.Component {
   getWeather = query => {
     if(query != '') {
       const baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
-      // const baseUrl = 'http://localhost:3000/'
       fetch(baseUrl + query).then(resp => {
         const contentType = resp.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) {
@@ -47,7 +46,6 @@ class WeatherForecast extends React.Component {
         }
         throw new TypeError("Error");
       }).then(data => {
-        console.log(data);
         let day1 = [];
         let day2 = [];
         let day3= [];
