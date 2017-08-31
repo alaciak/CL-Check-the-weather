@@ -33893,7 +33893,7 @@ var MyLocation = function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MyLocation.__proto__ || Object.getPrototypeOf(MyLocation)).call.apply(_ref, [this].concat(args))), _this), _this.handleOnCLickRemoveLocation = function (event) {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MyLocation.__proto__ || Object.getPrototypeOf(MyLocation)).call.apply(_ref, [this].concat(args))), _this), _this.handleOnClickRemoveLocation = function (event) {
       if (typeof _this.props.onRemoveLocation === 'function') {
         _this.props.onRemoveLocation(_this.props.text);
       }
@@ -33913,7 +33913,7 @@ var MyLocation = function (_React$Component) {
         ),
         _react2.default.createElement(
           'span',
-          { className: 'location-remove', onClick: this.handleOnCLickRemoveLocation },
+          { className: 'location-remove', onClick: this.handleOnClickRemoveLocation },
           'X'
         )
       );
@@ -33933,9 +33933,11 @@ var MyLocationsPage = function (_React$Component2) {
 
     _this2.onRemoveLocation = function (event) {
       var locations = JSON.parse(localStorage.getItem('locations'));
-      locations.splice(locations.indexOf(_this2.props.text), 1);
+      locations.splice(locations.indexOf(event), 1);
       localStorage.setItem('locations', JSON.stringify(locations));
-      _this2.setState({ myLocations: locations });
+      _this2.setState({
+        myLocations: locations
+      });
     };
 
     _this2.state = {
@@ -33952,7 +33954,9 @@ var MyLocationsPage = function (_React$Component2) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.setState({ myLocations: this.getMyLocations() });
+      this.setState({
+        myLocations: this.getMyLocations()
+      });
     }
   }, {
     key: 'render',

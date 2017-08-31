@@ -4,7 +4,7 @@ import {Link, IndexLink} from 'react-router';
 
 class MyLocation extends React.Component {
 
-  handleOnCLickRemoveLocation = event => {
+  handleOnClickRemoveLocation = event => {
     if (typeof this.props.onRemoveLocation === 'function') {
       this.props.onRemoveLocation(this.props.text);
     }
@@ -13,7 +13,7 @@ class MyLocation extends React.Component {
   render() {
     return <li className='my-locations_check'>
       <Link to={this.props.text}>{ this.props.text }</Link>
-      <span className='location-remove' onClick={ this.handleOnCLickRemoveLocation }>X</span>
+      <span className='location-remove' onClick={ this.handleOnClickRemoveLocation }>X</span>
     </li>
   }
 }
@@ -31,14 +31,18 @@ class MyLocationsPage extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({myLocations: this.getMyLocations()});
+    this.setState({
+      myLocations: this.getMyLocations()
+    });
   }
 
   onRemoveLocation = event => {
     let locations = JSON.parse(localStorage.getItem('locations'));
-    locations.splice(locations.indexOf(this.props.text), 1);
+    locations.splice(locations.indexOf(event), 1);
     localStorage.setItem('locations', JSON.stringify(locations));
-    this.setState({myLocations: locations})
+    this.setState({
+      myLocations: locations
+    });
   }
 
   render() {
@@ -58,7 +62,8 @@ class MyLocationsPage extends React.Component {
         <Nav/>
         <div className='locations-list'>
           <ul>
-            <p>My Locations</p>{locations}</ul>
+            <p>My Locations</p>{locations}
+          </ul>
           <div className='link-main_page'>
             <Link to='/'>&lt;&lt; back to the main page</Link>
           </div>
