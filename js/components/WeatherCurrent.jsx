@@ -36,8 +36,12 @@ class WeatherCurrent extends React.Component {
     }
   }
 
+  isEmpty(string) {
+        return (!string || 0 === string.length);
+    }
+
   getWeather = query => {
-    if(query != '') {
+    if(!this.isEmpty(query)) {
       const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
       fetch(baseUrl + query).then(resp => {
         const contentType = resp.headers.get("content-type");
@@ -63,9 +67,9 @@ class WeatherCurrent extends React.Component {
     this.getWeather(this.props.query);
   }
 
-componentWillReceiveProps(nextProps) {
-  this.getWeather(nextProps.query);
-}
+  componentWillReceiveProps(nextProps) {
+    this.getWeather(nextProps.query);
+  }
 
   render() {
     if (this.state.loading) {

@@ -46,6 +46,7 @@ class WeatherForecast extends React.Component {
         }
         throw new TypeError("Error");
       }).then(data => {
+        console.log(data);
         let day1 = [];
         let day2 = [];
         let day3= [];
@@ -106,16 +107,16 @@ class WeatherForecast extends React.Component {
         this.setState({
           tempMin2: Math.ceil(tempsMin2[0]),
           tempMax2: Math.ceil(tempsMax2[0]),
-          iconId2: data.list[(day1.length+ 5)].weather[0].icon,
+          iconId2: data.list[(day1.length+ 4)].weather[0].icon,
           dayName2: this.state.days[new Date(data.list[(day1.length + 4)].dt_txt).getDay()],
           tempMin3: Math.ceil(tempsMin3[0]),
           tempMax3: Math.ceil(tempsMax3[0]),
-          iconId3: data.list[(day1.length + 13)].weather[0].icon,
-          dayName3: this.state.days[new Date(data.list[(day1.length + 13)].dt_txt).getDay()],
+          iconId3: data.list[(day1.length + 12)].weather[0].icon,
+          dayName3: this.state.days[new Date(data.list[(day1.length + 12)].dt_txt).getDay()],
           tempMin4: Math.ceil(tempsMin4[0]),
           tempMax4: Math.ceil(tempsMax4[0]),
-          iconId4: data.list[(day1.length + 21)].weather[0].icon,
-          dayName4: this.state.days[new Date(data.list[(day1.length + 21)].dt_txt).getDay()],
+          iconId4: data.list[(day1.length + 20)].weather[0].icon,
+          dayName4: this.state.days[new Date(data.list[(day1.length + 20)].dt_txt).getDay()],
           loading: false
         });
       })

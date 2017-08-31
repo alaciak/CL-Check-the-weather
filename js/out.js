@@ -26884,21 +26884,12 @@ var WeatherPage = function (_React$Component) {
     };
 
     _this.state = {
-      query: null
+      query: _this.props.params.city ? _this.props.params.city : 'Krakow'
     };
     return _this;
   }
 
   _createClass(WeatherPage, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      if (this.props.params.city === undefined) {
-        this.setState({
-          query: 'Krakow'
-        });
-      }
-    }
-  }, {
     key: 'render',
     value: function render() {
       var query = this.state.query ? this.state.query : this.props.params.city;
@@ -27176,7 +27167,7 @@ var WeatherCurrent = function (_React$Component4) {
     var _this4 = _possibleConstructorReturn(this, (WeatherCurrent.__proto__ || Object.getPrototypeOf(WeatherCurrent)).call(this, props));
 
     _this4.getWeather = function (query) {
-      if (query != '') {
+      if (!_this4.isEmpty(query)) {
         var baseUrl = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
         fetch(baseUrl + query).then(function (resp) {
           var contentType = resp.headers.get("content-type");
@@ -27205,6 +27196,11 @@ var WeatherCurrent = function (_React$Component4) {
   }
 
   _createClass(WeatherCurrent, [{
+    key: 'isEmpty',
+    value: function isEmpty(string) {
+      return !string || 0 === string.length;
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.getWeather(this.props.query);
@@ -27364,6 +27360,7 @@ var WeatherForecast = function (_React$Component4) {
           }
           throw new TypeError("Error");
         }).then(function (data) {
+          console.log(data);
           var day1 = [];
           var day2 = [];
           var day3 = [];
@@ -27435,16 +27432,16 @@ var WeatherForecast = function (_React$Component4) {
           _this4.setState({
             tempMin2: Math.ceil(tempsMin2[0]),
             tempMax2: Math.ceil(tempsMax2[0]),
-            iconId2: data.list[day1.length + 5].weather[0].icon,
+            iconId2: data.list[day1.length + 4].weather[0].icon,
             dayName2: _this4.state.days[new Date(data.list[day1.length + 4].dt_txt).getDay()],
             tempMin3: Math.ceil(tempsMin3[0]),
             tempMax3: Math.ceil(tempsMax3[0]),
-            iconId3: data.list[day1.length + 13].weather[0].icon,
-            dayName3: _this4.state.days[new Date(data.list[day1.length + 13].dt_txt).getDay()],
+            iconId3: data.list[day1.length + 12].weather[0].icon,
+            dayName3: _this4.state.days[new Date(data.list[day1.length + 12].dt_txt).getDay()],
             tempMin4: Math.ceil(tempsMin4[0]),
             tempMax4: Math.ceil(tempsMax4[0]),
-            iconId4: data.list[day1.length + 21].weather[0].icon,
-            dayName4: _this4.state.days[new Date(data.list[day1.length + 21].dt_txt).getDay()],
+            iconId4: data.list[day1.length + 20].weather[0].icon,
+            dayName4: _this4.state.days[new Date(data.list[day1.length + 20].dt_txt).getDay()],
             loading: false
           });
         }).catch(function (error) {
@@ -27576,7 +27573,7 @@ var ManageMyLocations = function (_React$Component) {
           localStorage.setItem('locations', JSON.stringify(newLocations));
         }
       }
-      _this.msg.show('Your location has been added', {
+      _this.msg.show('Your location has been successfully added', {
         time: 2000,
         type: 'success',
         icon: _react2.default.createElement('img', { src: 'images/alert-icon.png' })

@@ -27,7 +27,7 @@ handleAddLocation = event => {
       localStorage.setItem('locations', JSON.stringify(newLocations));
     }
   }
-  this.msg.show('Your location has been added', {
+  this.msg.show('Your location has been successfully added', {
     time: 2000,
     type: 'success',
     icon: <img src='images/alert-icon.png' />

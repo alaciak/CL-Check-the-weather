@@ -11,15 +11,7 @@ class WeatherPage extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        query: null
-      }
-    }
-
-    componentDidMount() {
-      if (this.props.params.city === undefined) {
-        this.setState({
-          query: 'Krakow'
-        });
+        query: (this.props.params.city) ? this.props.params.city : 'Krakow'
       }
     }
 
