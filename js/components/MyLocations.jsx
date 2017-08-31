@@ -10,8 +10,14 @@ handleOnClick = event => {
   }
 }
 
+handleOnCLickRemoveLocation = event => {
+  let locations = JSON.parse(localStorage.getItem('locations'));
+  locations.splice(locations.indexOf(this.props.text), 1);
+  localStorage.setItem('locations', JSON.stringify(locations));
+}
+
   render() {
-    return <li><span onClick={ this.handleOnClick }>{ this.props.text }</span><span className='remove-location'>X</span>
+    return <li><span onClick={ this.handleOnClick }>{ this.props.text }</span><span className='remove-location' onClick={ this.handleOnCLickRemoveLocation }>X</span>
     </li>
   }
 }
@@ -29,7 +35,9 @@ class MyLocations extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({myLocations: this.getMyLocations()});
+    this.setState({
+      myLocations: this.getMyLocations()
+    });
   }
 
   render() {

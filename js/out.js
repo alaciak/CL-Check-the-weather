@@ -12441,6 +12441,10 @@ var MyLocation = function (_React$Component) {
       if (typeof _this.props.onChangeLocation === 'function') {
         _this.props.onChangeLocation(_this.props.text);
       }
+    }, _this.handleOnCLickRemoveLocation = function (event) {
+      var locations = JSON.parse(localStorage.getItem('locations'));
+      locations.splice(locations.indexOf(_this.props.text), 1);
+      localStorage.setItem('locations', JSON.stringify(locations));
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -12457,7 +12461,7 @@ var MyLocation = function (_React$Component) {
         ),
         _react2.default.createElement(
           'span',
-          { className: 'remove-location' },
+          { className: 'remove-location', onClick: this.handleOnCLickRemoveLocation },
           'X'
         )
       );
@@ -12489,7 +12493,9 @@ var MyLocations = function (_React$Component2) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.setState({ myLocations: this.getMyLocations() });
+      this.setState({
+        myLocations: this.getMyLocations()
+      });
     }
   }, {
     key: 'render',
@@ -26461,6 +26467,7 @@ var ManageMyLocations = function (_React$Component) {
     }
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ManageMyLocations.__proto__ || Object.getPrototypeOf(ManageMyLocations)).call.apply(_ref, [this].concat(args))), _this), _this.handleAddLocation = function (event) {
+      event.preventDefault();
       if (_this.props.location.length > 0) {
         var myLocations = JSON.parse(localStorage.getItem('locations')) || [];
         if (myLocations.indexOf(_this.props.location) === -1) {
@@ -26486,7 +26493,11 @@ var ManageMyLocations = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'col-6', onClick: this.handleAddLocation },
-              'Add to my locations'
+              _react2.default.createElement(
+                'a',
+                { href: '#' },
+                'Add to my locations'
+              )
             ),
             _react2.default.createElement(
               'div',

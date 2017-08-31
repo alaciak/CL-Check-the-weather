@@ -9,6 +9,7 @@ class ManageMyLocations extends React.Component {
 
 
 handleAddLocation = event => {
+  event.preventDefault();
   if(this.props.location.length > 0) {
     let myLocations = JSON.parse(localStorage.getItem('locations')) || [];
     if(myLocations.indexOf(this.props.location) === -1) {
@@ -22,7 +23,7 @@ handleAddLocation = event => {
     return <section id='add-locations'>
       <div className='container'>
         <div className='row my-locations'>
-          <div className='col-6' onClick={ this.handleAddLocation }>Add to my locations</div>
+          <div className='col-6' onClick={ this.handleAddLocation }><a href='#'>Add to my locations</a></div>
           <div className='col-6 my-locations_button-check'><Link to='/locations'>My locations</Link></div>
         </div>
       </div>
