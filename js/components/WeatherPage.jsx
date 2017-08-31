@@ -12,7 +12,15 @@ class WeatherPage extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        query: ''
+        query: null
+      }
+    }
+
+    componentDidMount() {
+      if (this.props.params.city === undefined) {
+        this.setState({
+          query: 'Krakow'
+        });
       }
     }
 
@@ -23,11 +31,12 @@ class WeatherPage extends React.Component {
   }
 
   render() {
+    let query = (this.state.query) ? this.state.query : this.props.params.city;
     return <div>
       <Header onChangeLocation={ this.handleChangeLocation }/>
-      <CurrentWeather query={ this.state.query } />
-      <ManageMyLocations location={ this.state.query }/>
-      <WeatherForecast query={ this.state.query } />
+      <CurrentWeather query={ query } />
+      <ManageMyLocations location={ query }/>
+      <WeatherForecast query={ query } />
     </div>
   }
 }

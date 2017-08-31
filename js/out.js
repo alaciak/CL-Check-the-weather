@@ -12453,10 +12453,11 @@ var MyLocation = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'li',
-        null,
+        { className: 'my-locations_check' },
         _react2.default.createElement(
-          'span',
-          { onClick: this.handleOnClick },
+          _reactRouter.Link,
+          { to: this.props.text },
+          ' ',
           this.props.text
         ),
         _react2.default.createElement(
@@ -12528,7 +12529,7 @@ var MyLocations = function (_React$Component2) {
         });
         return _react2.default.createElement(
           'div',
-          { className: 'col-12' },
+          null,
           _react2.default.createElement(_Nav2.default, null),
           _react2.default.createElement(
             'ul',
@@ -13088,12 +13089,9 @@ var App = function (_React$Component) {
           _reactRouter.Route,
           { path: '/' },
           _react2.default.createElement(_reactRouter.IndexRoute, { component: _WeatherPage2.default }),
-          _react2.default.createElement(
-            _reactRouter.Route,
-            { path: '/locations' },
-            _react2.default.createElement(_reactRouter.IndexRoute, { component: _MyLocations2.default })
-          )
-        )
+          _react2.default.createElement(_reactRouter.Route, { path: '/locations', component: _MyLocations2.default })
+        ),
+        _react2.default.createElement(_reactRouter.Route, { path: '/:city', component: _WeatherPage2.default })
       );
     }
   }]);
@@ -25784,21 +25782,31 @@ var WeatherPage = function (_React$Component) {
     };
 
     _this.state = {
-      query: ''
+      query: null
     };
     return _this;
   }
 
   _createClass(WeatherPage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      if (this.props.params.city === undefined) {
+        this.setState({
+          query: 'Krakow'
+        });
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var query = this.state.query ? this.state.query : this.props.params.city;
       return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(_Header2.default, { onChangeLocation: this.handleChangeLocation }),
-        _react2.default.createElement(_CurrentWeather2.default, { query: this.state.query }),
-        _react2.default.createElement(_ManageMyLocations2.default, { location: this.state.query }),
-        _react2.default.createElement(_WeatherForecast2.default, { query: this.state.query })
+        _react2.default.createElement(_CurrentWeather2.default, { query: query }),
+        _react2.default.createElement(_ManageMyLocations2.default, { location: query }),
+        _react2.default.createElement(_WeatherForecast2.default, { query: query })
       );
     }
   }]);

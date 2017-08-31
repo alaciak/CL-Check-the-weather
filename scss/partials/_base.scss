@@ -209,13 +209,15 @@ footer {
     border-radius: 5px;
     display: flex;
     align-items: center;
-    justify-content:space-around;
+    justify-content:space-between;
+    padding: 0 .5em;
     text-transform: uppercase;
     font-weight: bold;
     color: map-get($color-fonts, menu);
     margin-top: 2em;
     height: 5vh;
     background: map-get($color-fonts, highlight);
+    margin: 1em auto;
   }
 
   .remove-location {
@@ -229,6 +231,7 @@ footer {
     font-size: 1.5em;
     border-bottom: 2px solid map-get($color-fonts, menu);
     padding-bottom: .5em;
+    text-align: center;
   }
 }
 
@@ -251,4 +254,9 @@ footer {
     text-decoration: none;
     color: map-get($color-fonts, menu);
   }
+}
+
+.my-locations_check a {
+  text-decoration: none;
+  color: map-get($color-fonts, menu);
 }

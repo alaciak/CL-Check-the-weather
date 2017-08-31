@@ -330,13 +330,15 @@ footer p {
   border-radius: 5px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 .5em;
   text-transform: uppercase;
   font-weight: bold;
   color: #e6ebef;
   margin-top: 2em;
   height: 5vh;
   background: #5789db;
+  margin: 1em auto;
 }
 
 .locations-list .remove-location {
@@ -351,6 +353,7 @@ footer p {
   font-size: 1.5em;
   border-bottom: 2px solid #e6ebef;
   padding-bottom: .5em;
+  text-align: center;
 }
 
 .link-main {
@@ -369,6 +372,11 @@ footer p {
 }
 
 .my-locations a {
+  text-decoration: none;
+  color: #e6ebef;
+}
+
+.my-locations_check a {
   text-decoration: none;
   color: #e6ebef;
 }

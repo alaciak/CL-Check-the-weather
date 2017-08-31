@@ -17,10 +17,11 @@ class App extends React.Component {
     return <Router history={hashHistory}>
       <Route path="/">
         <IndexRoute component={WeatherPage}/>
-        <Route path="/locations">
-          <IndexRoute component={MyLocations}/>
-        </Route>
+        <Route path="/locations" component={MyLocations}/>
+
+
       </Route>
+      <Route path="/:city" component={WeatherPage}/>
     </Router>
   }
 }

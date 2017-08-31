@@ -17,7 +17,7 @@ handleOnCLickRemoveLocation = event => {
 }
 
   render() {
-    return <li><span onClick={ this.handleOnClick }>{ this.props.text }</span><span className='remove-location' onClick={ this.handleOnCLickRemoveLocation }>X</span>
+    return <li className='my-locations_check'><Link to={this.props.text}> { this.props.text }</Link><span className='remove-location' onClick={ this.handleOnCLickRemoveLocation }>X</span>
     </li>
   }
 }
@@ -53,7 +53,7 @@ class MyLocations extends React.Component {
       let locations = this.state.myLocations.map((el, index) => {
         return <MyLocation key={ index } text={ el } onChangeLocation={ this.props.onChangeLocation }/>
       })
-      return <div className='col-12'>
+      return <div>
         <Nav/>
         <ul className='locations-list'>
           <p>My Locations</p>{locations}</ul>
