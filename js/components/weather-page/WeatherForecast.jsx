@@ -36,7 +36,7 @@ class WeatherForecast extends React.Component {
 
   getWeather = query => {
     if(query != '') {
-      const baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
+      const baseUrl = 'https://api.openweathermap.org/data/2.5/forecast?mode=json&units=metric&APPID=68ff784ae84d9c0d9f1d3d2be50a07d7&q=';
       fetch(baseUrl + query).then(resp => {
         const contentType = resp.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) {
