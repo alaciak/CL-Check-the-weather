@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import WeatherPage from './WeatherPage.jsx'
 import MyLocationsPage from './MyLocationsPage.jsx'
+import Main from './Main.jsx'
 import {
   Router,
   Route,
@@ -15,7 +16,7 @@ class App extends React.Component {
 
   render() {
     return <Router history={ hashHistory }>
-      <Route path="/">
+      <Route path="/" component={ Main }>
         <IndexRoute component={ WeatherPage }/>
         <Route path="/locations" component={ MyLocationsPage }/>
       </Route>

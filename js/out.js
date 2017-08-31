@@ -14810,6 +14810,10 @@ var _MyLocationsPage = __webpack_require__(311);
 
 var _MyLocationsPage2 = _interopRequireDefault(_MyLocationsPage);
 
+var _Main = __webpack_require__(318);
+
+var _Main2 = _interopRequireDefault(_Main);
+
 var _reactRouter = __webpack_require__(66);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -14837,7 +14841,7 @@ var App = function (_React$Component) {
         { history: _reactRouter.hashHistory },
         _react2.default.createElement(
           _reactRouter.Route,
-          { path: '/' },
+          { path: '/', component: _Main2.default },
           _react2.default.createElement(_reactRouter.IndexRoute, { component: _WeatherPage2.default }),
           _react2.default.createElement(_reactRouter.Route, { path: '/locations', component: _MyLocationsPage2.default })
         ),
@@ -26957,7 +26961,6 @@ var Header = function (_React$Component) {
       return _react2.default.createElement(
         'header',
         null,
-        _react2.default.createElement(_Nav2.default, null),
         _react2.default.createElement(
           'div',
           { className: 'container search-box' },
@@ -33964,7 +33967,6 @@ var MyLocationsPage = function (_React$Component2) {
         return _react2.default.createElement(
           'div',
           { className: 'col-12' },
-          _react2.default.createElement(_Nav2.default, null),
           _react2.default.createElement(
             'div',
             { className: 'no-locations-message' },
@@ -33987,7 +33989,6 @@ var MyLocationsPage = function (_React$Component2) {
         return _react2.default.createElement(
           'div',
           null,
-          _react2.default.createElement(_Nav2.default, null),
           _react2.default.createElement(
             'div',
             { className: 'locations-list' },
@@ -34020,6 +34021,67 @@ var MyLocationsPage = function (_React$Component2) {
 }(_react2.default.Component);
 
 module.exports = MyLocationsPage;
+
+/***/ }),
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(20);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _Nav = __webpack_require__(110);
+
+var _Nav2 = _interopRequireDefault(_Nav);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Main = function (_React$Component) {
+  _inherits(Main, _React$Component);
+
+  function Main() {
+    _classCallCheck(this, Main);
+
+    return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
+  }
+
+  _createClass(Main, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'col-12' },
+        _react2.default.createElement(_Nav2.default, null),
+        this.props.children
+      );
+    }
+  }]);
+
+  return Main;
+}(_react2.default.Component);
+
+module.exports = Main;
 
 /***/ })
 /******/ ]);

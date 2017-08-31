@@ -48,7 +48,6 @@ class MyLocationsPage extends React.Component {
   render() {
     if (this.state.myLocations.length < 1) {
       return <div className='col-12'>
-        <Nav/>
         <div className='no-locations-message'>
           <div>You have no locations added yet...</div>
           <Link className='link-main_page' to='/'>&lt;&lt; back to the main page</Link>
@@ -59,7 +58,6 @@ class MyLocationsPage extends React.Component {
         return <MyLocation key={ index } text={ el } onRemoveLocation={ this.onRemoveLocation }/>
       })
       return <div>
-        <Nav/>
         <div className='locations-list'>
           <ul>
             <p>My Locations</p>{locations}

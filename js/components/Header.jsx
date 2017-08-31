@@ -7,7 +7,6 @@ class Header extends React.Component {
 
   render() {
     return <header>
-      <Nav />
       <div className='container search-box'>
         <div className='row'>
           <SearchBox onChangeLocation={ this.props.onChangeLocation }/>
