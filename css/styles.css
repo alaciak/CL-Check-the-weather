@@ -398,7 +398,7 @@ input[type=text] {
   height: 50px;
 }
 
-.alert-message div {
+.alert-message div:nth-of-type(2) {
   font-weight: bold;
   font-family: "Nunito", sans-sefif;
 }

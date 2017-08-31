@@ -12,7 +12,7 @@ class ManageMyLocations extends React.Component {
     this.alertOptions = {
       offset: 14,
       position: 'bottom left',
-      theme: 'light',
+      theme: 'dark',
       time: 5000,
       transition: 'scale'
     };
