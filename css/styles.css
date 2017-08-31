@@ -93,7 +93,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   font-size: 12px;
-  height: 1200px;
+  min-height: 100vh;
 }
 
 @media (min-width: 480px) {
@@ -155,6 +155,20 @@ input[type=text] {
   opacity: 0.8;
 }
 
+.weather-current .weather-current_heading {
+  color: #5789db;
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  font-weight: bold;
+  text-transform: capitalize;
+  word-spacing: 0.3em;
+  letter-spacing: 2px;
+  border-bottom: 2px solid #e6ebef;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .weather-current_temperature {
   color: #e6ebef;
   font-size: 2.5em;
@@ -197,7 +211,7 @@ input[type=text] {
 
 @media (min-width: 768px) {
   .weather-current_icon img {
-    height: 30vh;
+    height: 25vh;
   }
 }
 
@@ -298,16 +312,21 @@ input[type=text] {
   margin-left: 1em;
 }
 
+.my-locations a {
+  text-decoration: none;
+  color: #e6ebef;
+}
+
 .locations-list {
   background: #000;
   opacity: 0.8;
-  height: 70vh;
+  height: 100vh;
   width: 100%;
   padding: 2em;
 }
 
 .locations-list li {
-  width: 30%;
+  width: 45%;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -322,9 +341,19 @@ input[type=text] {
   margin: 1em auto;
 }
 
-.locations-list .remove-location {
-  color: #000;
+@media (min-width: 768px) {
+  .locations-list li {
+    height: 7vh;
+  }
+}
+
+.locations-list .location-remove {
+  color: #e6ebef;
   font-size: 1.5em;
+}
+
+.locations-list .location-remove:hover {
+  cursor: pointer;
 }
 
 .locations-list p {
@@ -337,20 +366,16 @@ input[type=text] {
   text-align: center;
 }
 
-.link-main {
+.link-main_page {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1em;
-  margin-top: 3em;
-}
-
-.link-main a {
+  margin-top: 2em;
   color: #e6ebef;
 }
 
-.my-locations a {
-  text-decoration: none;
+.link-main_page a {
   color: #e6ebef;
 }
 
@@ -361,10 +386,19 @@ input[type=text] {
 
 .no-locations-message {
   text-align: center;
-  height: 15vh;
+  height: 30vh;
   font-size: 1.5em;
   background: #000;
-  opacity: .8;
+  opacity: 0.8;
   padding: 2em;
   color: #e6ebef;
+}
+
+.alert-message img {
+  height: 50px;
+}
+
+.alert-message div {
+  font-weight: bold;
+  font-family: "Nunito", sans-sefif;
 }

@@ -1,6 +1,10 @@
 @import "modules/reset";
-@import "modules/mixins";
 @import "modules/placeholders";
 @import "modules/variables";
 @import "modules/grid";
 @import "partials/base";
+@import "partials/searchBox";
+@import "partials/weatherCurrent";
+@import "partials/weatherForecast";
+@import "partials/myLocations";
+@import "partials/alertMessage";

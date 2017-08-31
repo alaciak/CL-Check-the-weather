@@ -1,0 +1,56 @@
+.weather-forecast {
+  background: map-get($color-background, main);
+  opacity: 0.8;
+  margin-top: 1em;
+
+  .forecast-heading {
+    color: map-get($color-fonts, highlight);
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    font-weight: bold;
+    text-transform: capitalize;
+    word-spacing: 0.3em;
+    letter-spacing: 2px;
+    border-bottom: 2px solid map-get($color-fonts, menu);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+.weather-forecast_day {
+  display: flex;
+  justify-content: center;
+  color: map-get($color-fonts, menu);
+  font-size: 1.5em;
+  padding: 0.3em 0;
+  overflow: hidden;
+  white-space: nowrap;
+  @media (min-width: 768px) {
+    padding: 0.5em;
+  }
+}
+
+.weather-forecast_temperature {
+  color: map-get($color-fonts, menu);
+  font-size: 1.25em;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  word-spacing: 1.5em;
+  margin-bottom: 1em;
+}
+
+.weather-forecast_icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 20vh;
+    @media (min-width: 768px) {
+      height: 20vh;
+    }
+  }
+}

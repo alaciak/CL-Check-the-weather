@@ -1,0 +1,109 @@
+.my-locations {
+  text-transform: uppercase;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 0;
+
+  div {
+    color: map-get($color-fonts, menu);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+    border-radius: 5px;
+    @media (min-width: 768px) {
+      height: 10vh;
+    }
+  }
+
+  div:first-of-type {
+    background: map-get($color-fonts, highlight);
+    margin-right: 1em;
+  }
+
+  div:nth-of-type(2) {
+    background: map-get($color-background, button);
+    margin-left: 1em;
+  }
+
+  a {
+    text-decoration: none;
+    color: map-get($color-fonts, menu);
+  }
+}
+
+.locations-list {
+  background: map-get($color-background, main);
+  opacity: 0.8;
+  height: 100vh;
+  width: 100%;
+  padding: 2em;
+
+  li {
+    width: 45%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.5em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: map-get($color-fonts, menu);
+    margin-top: 2em;
+    height: 5vh;
+    background: map-get($color-fonts, highlight);
+    margin: 1em auto;
+    @media (min-width: 768px) {
+      height: 7vh;
+    }
+  }
+
+  .location-remove {
+    color: map-get($color-fonts, menu);
+    font-size: 1.5em;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  p {
+    color: map-get($color-fonts, menu);
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 1.5em;
+    border-bottom: 2px solid map-get($color-fonts, menu);
+    padding-bottom: 0.5em;
+    text-align: center;
+  }
+}
+
+.link-main_page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  margin-top: 2em;
+  color: map-get($color-fonts, menu);
+
+  a {
+    color: map-get($color-fonts, menu);
+  }
+}
+
+.my-locations_check a {
+  text-decoration: none;
+  color: map-get($color-fonts, menu);
+}
+
+.no-locations-message {
+  text-align: center;
+  height: 30vh;
+  font-size: 1.5em;
+  background: map-get($color-background, main);
+  opacity: 0.8;
+  padding: 2em;
+  color: map-get($color-fonts, menu);
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import WeatherPage from './WeatherPage.jsx'
-import MyLocations from './MyLocations.jsx'
+import MyLocationsPage from './MyLocationsPage.jsx'
 import {
   Router,
   Route,
@@ -14,14 +14,12 @@ import {
 class App extends React.Component {
 
   render() {
-    return <Router history={hashHistory}>
+    return <Router history={ hashHistory }>
       <Route path="/">
-        <IndexRoute component={WeatherPage}/>
-        <Route path="/locations" component={MyLocations}/>
-
-
+        <IndexRoute component={ WeatherPage }/>
+        <Route path="/locations" component={ MyLocationsPage }/>
       </Route>
-      <Route path="/:city" component={WeatherPage}/>
+      <Route path="/:city" component={ WeatherPage }/>
     </Router>
   }
 }

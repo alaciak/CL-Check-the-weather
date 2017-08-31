@@ -4,17 +4,17 @@ import ReactDOM from 'react-dom';
 class City extends React.Component {
 
   render() {
-    return <div className='col-4 weather-current_city'>{this.props.name}</div>
+    return <div className='col-4 weather-current_city'>{ this.props.name }</div>
   }
 }
 class WeatherConditions extends React.Component {
 
   render() {
     return <div className='col-4'>
-      <p className='weather-current_temperature'>{this.props.temperature}
+      <p className='weather-current_temperature'>{ this.props.temperature }
         &#8451;
       </p>
-      <p className='weather-current_description'>{this.props.description}</p>
+      <p className='weather-current_description'>{ this.props.description }</p>
     </div>
   }
 }
@@ -28,7 +28,7 @@ class WeatherIcon extends React.Component {
   }
 }
 
-class CurrentWeather extends React.Component {
+class WeatherCurrent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -54,7 +54,8 @@ class CurrentWeather extends React.Component {
           loading: false
         });
       })
-      .catch(function(error) { console.log(error); });
+      .catch(function(error) {
+        console.log(error); });
     }
   }
 
@@ -73,9 +74,10 @@ componentWillReceiveProps(nextProps) {
       return <section id='weather-current'>
         <div className='container'>
           <div className='row weather-current'>
-            <City name={this.state.city}/>
-            <WeatherConditions temperature={this.state.temperature} description={this.state.description}/>
-            <WeatherIcon iconId={this.state.iconId}/>
+            <p className='weather-current_heading'>Current Weather</p>
+            <City name={ this.state.city }/>
+            <WeatherConditions temperature={ this.state.temperature } description={ this.state.description }/>
+            <WeatherIcon iconId={ this.state.iconId }/>
           </div>
         </div>
       </section>
@@ -83,4 +85,4 @@ componentWillReceiveProps(nextProps) {
   }
 }
 
-module.exports = CurrentWeather;
+module.exports = WeatherCurrent;

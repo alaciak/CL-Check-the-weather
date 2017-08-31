@@ -12,7 +12,7 @@ class WeatherForecastDay extends React.Component {
 class WeatherForecastConditions extends React.Component {
 
   render() {
-    return <p className='weather-forecast_temperature'>{this.props.tempMax}&#8451; {this.props.tempMin}&#8451;</p>
+    return <p className='weather-forecast_temperature'>{ this.props.tempMax }&#8451; { this.props.tempMin }&#8451;</p>
   }
 }
 
@@ -49,9 +49,7 @@ class WeatherForecast extends React.Component {
         let day1 = [];
         let day2 = [];
         let day3= [];
-        let day4=[]
-        let tempsMin1 = [];
-        let tempsMax1  = [];
+        let day4=[];
         let tempsMin2 = [];
         let tempsMax2  = [];
         let tempsMin3 = [];
@@ -82,13 +80,6 @@ class WeatherForecast extends React.Component {
           }
         }
 
-        for(let i  = 0; i < day1.length; i++) {
-          tempsMin1.push(parseInt(data.list[i].main.temp_min));
-          tempsMax1.push(parseInt(data.list[i].main.temp_max));
-        }
-        tempsMax1.sort((a, b) => b - a);
-        tempsMin1.sort((a, b) => a - b);
-
         for(let i  = (day1.length - 1); i < (day1.length + day2.length); i++) {
           tempsMin2.push(parseInt(data.list[i].main.temp_min));
           tempsMax2.push(parseInt(data.list[i].main.temp_max));
@@ -113,10 +104,6 @@ class WeatherForecast extends React.Component {
        tempsMin4.sort((a, b) => a - b);
 
         this.setState({
-          tempMin1: Math.ceil(tempsMin1[0]),
-          tempMax1: Math.ceil(tempsMax1[0]),
-          iconId1: data.list[0].weather[0].icon,
-          dayName1: this.state.days[new Date(data.list[0].dt_txt).getDay()],
           tempMin2: Math.ceil(tempsMin2[0]),
           tempMax2: Math.ceil(tempsMax2[0]),
           iconId2: data.list[(day1.length+ 5)].weather[0].icon,

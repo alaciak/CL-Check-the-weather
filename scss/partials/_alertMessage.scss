@@ -1,0 +1,10 @@
+.alert-message {
+  img {
+    height: 50px;;
+  }
+  div {
+    font-weight: bold;
+    font-family: $font-main;
+    background: map-get($color-background, highlight);
+  }
+}

@@ -23,16 +23,23 @@ class SearchBox extends React.Component {
     });
   }
 
+
   handleOnClick = event => {
     if(this.state.text !== 'Check the weather by city name...' && typeof this.props.onChangeLocation === 'function') {
       this.props.onChangeLocation(this.state.text);
     }
   }
 
+  handleOnKeyPress = event => {
+    if(event.key === 'Enter') {
+      this.handleOnClick(event.target.value);
+      }
+    }
+
   render() {
     return <div>
-      <input className='col-10' type='text' value={ this.state.text } onChange={ this.handleOnChangeSearch } onClick={ this.handleOnClickSearch } ></input>
-      <div className='search-icon col-1' onClick={ this.handleOnClick } tabIndex="2" ></div>
+      <input className='col-10' type='text' value={ this.state.text } onChange={ this.handleOnChangeSearch } onClick={ this.handleOnClickSearch } onKeyPress={ this.handleOnKeyPress } ></input>
+      <div className='search-icon col-1' onClick={ this.handleOnClick } ></div>
     </div>;
   }
 }
