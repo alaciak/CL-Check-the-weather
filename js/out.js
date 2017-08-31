@@ -25913,13 +25913,13 @@ var SearchBox = function (_React$Component) {
     };
 
     _this.handleOnClick = function (event) {
-      if (_this.state.text !== 'Search by city name...' && typeof _this.props.onChangeLocation === 'function') {
+      if (_this.state.text !== 'Check the weather by city name...' && typeof _this.props.onChangeLocation === 'function') {
         _this.props.onChangeLocation(_this.state.text);
       }
     };
 
     _this.state = {
-      text: 'Search by city name...'
+      text: 'Check the weather by city name...'
     };
     return _this;
   }
@@ -26243,17 +26243,22 @@ var WeatherForecast = function (_React$Component4) {
           var day1 = [];
           var day2 = [];
           var day3 = [];
+          var day4 = [];
           var tempsMin1 = [];
           var tempsMax1 = [];
           var tempsMin2 = [];
           var tempsMax2 = [];
           var tempsMin3 = [];
           var tempsMax3 = [];
+          var tempsMin4 = [];
+          var tempsMax4 = [];
           var currentDay = new Date();
           var tomorrow = new Date();
           tomorrow.setDate(tomorrow.getDate() + 1);
           var dayAfterTomorrow = new Date();
           dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
+          var nextDay = new Date();
+          nextDay.setDate(nextDay.getDate() + 3);
 
           for (var i = 0; i < data.list.length; i++) {
             if (String(currentDay).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
@@ -26264,6 +26269,9 @@ var WeatherForecast = function (_React$Component4) {
             }
             if (String(dayAfterTomorrow).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
               day3.push(data.list[i].dt_txt);
+            }
+            if (String(nextDay).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
+              day4.push(data.list[i].dt_txt);
             }
           }
 
@@ -26301,6 +26309,18 @@ var WeatherForecast = function (_React$Component4) {
             return a - b;
           });
 
+          for (var _i4 = day1.length + day2.length + day3.length - 2; _i4 < day1.length + day2.length + day3.length + day4.length; _i4++) {
+            tempsMin4.push(parseInt(data.list[_i4].main.temp_min));
+            tempsMax4.push(parseInt(data.list[_i4].main.temp_max));
+          }
+
+          tempsMax4.sort(function (a, b) {
+            return b - a;
+          });
+          tempsMin4.sort(function (a, b) {
+            return a - b;
+          });
+
           _this4.setState({
             tempMin1: Math.ceil(tempsMin1[0]),
             tempMax1: Math.ceil(tempsMax1[0]),
@@ -26308,12 +26328,16 @@ var WeatherForecast = function (_React$Component4) {
             dayName1: _this4.state.days[new Date(data.list[0].dt_txt).getDay()],
             tempMin2: Math.ceil(tempsMin2[0]),
             tempMax2: Math.ceil(tempsMax2[0]),
-            iconId2: data.list[day1.length + 4].weather[0].icon,
+            iconId2: data.list[day1.length + 5].weather[0].icon,
             dayName2: _this4.state.days[new Date(data.list[day1.length + 4].dt_txt).getDay()],
             tempMin3: Math.ceil(tempsMin3[0]),
             tempMax3: Math.ceil(tempsMax3[0]),
-            iconId3: data.list[day1.length + 12].weather[0].icon,
-            dayName3: _this4.state.days[new Date(data.list[day1.length + 12].dt_txt).getDay()],
+            iconId3: data.list[day1.length + 13].weather[0].icon,
+            dayName3: _this4.state.days[new Date(data.list[day1.length + 13].dt_txt).getDay()],
+            tempMin4: Math.ceil(tempsMin4[0]),
+            tempMax4: Math.ceil(tempsMax4[0]),
+            iconId4: data.list[day1.length + 21].weather[0].icon,
+            dayName4: _this4.state.days[new Date(data.list[day1.length + 21].dt_txt).getDay()],
             loading: false
           });
         }).catch(function (error) {
@@ -26363,13 +26387,6 @@ var WeatherForecast = function (_React$Component4) {
               _react2.default.createElement(
                 'div',
                 { className: 'col-4' },
-                _react2.default.createElement(WeatherForecastDay, { dayName: this.state.dayName1 }),
-                _react2.default.createElement(WeatherForecastIcons, { iconId: this.state.iconId1 }),
-                _react2.default.createElement(WeatherForecastConditions, { tempMin: this.state.tempMin1, tempMax: this.state.tempMax1 })
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'col-4' },
                 _react2.default.createElement(WeatherForecastDay, { dayName: this.state.dayName2 }),
                 _react2.default.createElement(WeatherForecastIcons, { iconId: this.state.iconId2 }),
                 _react2.default.createElement(WeatherForecastConditions, { tempMin: this.state.tempMin2, tempMax: this.state.tempMax2 })
@@ -26380,6 +26397,13 @@ var WeatherForecast = function (_React$Component4) {
                 _react2.default.createElement(WeatherForecastDay, { dayName: this.state.dayName3 }),
                 _react2.default.createElement(WeatherForecastIcons, { iconId: this.state.iconId3 }),
                 _react2.default.createElement(WeatherForecastConditions, { tempMin: this.state.tempMin3, tempMax: this.state.tempMax3 })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'col-4' },
+                _react2.default.createElement(WeatherForecastDay, { dayName: this.state.dayName4 }),
+                _react2.default.createElement(WeatherForecastIcons, { iconId: this.state.iconId4 }),
+                _react2.default.createElement(WeatherForecastConditions, { tempMin: this.state.tempMin4, tempMax: this.state.tempMax4 })
               )
             )
           )
@@ -26466,7 +26490,7 @@ var ManageMyLocations = function (_React$Component) {
             ),
             _react2.default.createElement(
               'div',
-              { className: 'col-6' },
+              { className: 'col-6 my-locations_button-check' },
               _react2.default.createElement(
                 _reactRouter.Link,
                 { to: '/locations' },

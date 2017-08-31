@@ -4,7 +4,7 @@ class SearchBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: 'Search by city name...'
+      text: 'Check the weather by city name...'
     }
   }
 
@@ -24,7 +24,7 @@ class SearchBox extends React.Component {
   }
 
   handleOnClick = event => {
-    if(this.state.text !== 'Search by city name...' && typeof this.props.onChangeLocation === 'function') {
+    if(this.state.text !== 'Check the weather by city name...' && typeof this.props.onChangeLocation === 'function') {
       this.props.onChangeLocation(this.state.text);
     }
   }

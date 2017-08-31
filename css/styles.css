@@ -354,15 +354,21 @@ footer p {
 }
 
 .link-main {
-  height: 5vh;
-  background: #081a38;
+  height: 7vh;
+  background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
+  word-spacing: .3em;
 }
 
 .link-main a {
+  text-decoration: none;
+  color: #e6ebef;
+}
+
+.my-locations_button-check a {
   text-decoration: none;
   color: #e6ebef;
 }

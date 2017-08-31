@@ -23,7 +23,7 @@ handleAddLocation = event => {
       <div className='container'>
         <div className='row my-locations'>
           <div className='col-6' onClick={ this.handleAddLocation }>Add to my locations</div>
-          <div className='col-6'><Link to='/locations'>My locations</Link></div>
+          <div className='col-6 my-locations_button-check'><Link to='/locations'>My locations</Link></div>
         </div>
       </div>
     </section>

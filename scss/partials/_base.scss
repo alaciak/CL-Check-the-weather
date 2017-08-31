@@ -233,12 +233,20 @@ footer {
 }
 
 .link-main {
-  height: 5vh;
-  background: map-get($color-background, button);
+  height: 7vh;
+  background:#000;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
+  word-spacing: .3em;
+  a {
+    text-decoration: none;
+    color: map-get($color-fonts, menu);
+  }
+}
+
+.my-locations_button-check {
   a {
     text-decoration: none;
     color: map-get($color-fonts, menu);
