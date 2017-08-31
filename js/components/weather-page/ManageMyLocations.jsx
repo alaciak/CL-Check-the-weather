@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import AlertContainer from 'react-alert';
 import {
   Link,
@@ -45,7 +44,7 @@ handleAddLocation = event => {
       <alert className='col-4 alert-message'>
         <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
       </alert>
-  </section>
+  </section>;
   }
 }
 

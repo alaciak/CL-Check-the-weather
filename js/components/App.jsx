@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import WeatherPage from './WeatherPage.jsx'
-import MyLocationsPage from './MyLocationsPage.jsx'
-import Main from './Main.jsx'
+import WeatherPage from './weather-page/WeatherPage.jsx';
+import MyLocationsPage from './my-locations-page/MyLocationsPage.jsx';
+import Main from './Main.jsx';
+import '../../scss/style.scss';
 import {
   Router,
   Route,
@@ -21,7 +22,7 @@ class App extends React.Component {
         <Route path="/locations" component={ MyLocationsPage }/>
       </Route>
       <Route path="/:city" component={ WeatherPage }/>
-    </Router>
+    </Router>;
   }
 }
 

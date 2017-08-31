@@ -1,5 +1,4 @@
 import React from 'react';
-import Nav from './Nav.jsx';
 import {Link, IndexLink} from 'react-router';
 
 class MyLocation extends React.Component {
@@ -14,7 +13,7 @@ class MyLocation extends React.Component {
     return <li className='my-locations_check'>
       <Link to={this.props.text}>{ this.props.text }</Link>
       <span className='location-remove' onClick={ this.handleOnClickRemoveLocation }>X</span>
-    </li>
+    </li>;
   }
 }
 

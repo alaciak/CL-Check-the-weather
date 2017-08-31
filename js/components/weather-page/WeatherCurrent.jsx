@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class City extends React.Component {
 
@@ -7,6 +6,7 @@ class City extends React.Component {
     return <div className='col-4 weather-current_city'>{ this.props.name }</div>
   }
 }
+
 class WeatherConditions extends React.Component {
 
   render() {
@@ -84,7 +84,7 @@ class WeatherCurrent extends React.Component {
             <WeatherIcon iconId={ this.state.iconId }/>
           </div>
         </div>
-      </section>
+      </section>;
     }
   }
 }

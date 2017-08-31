@@ -1,11 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Header from './Header.jsx';
+import SearchBox from './SearchBox.jsx';
 import WeatherCurrent from './WeatherCurrent.jsx';
 import WeatherForecast from './WeatherForecast.jsx';
 import ManageMyLocations from './ManageMyLocations.jsx';
-import '../../scss/style.scss';
-
 
 class WeatherPage extends React.Component {
     constructor(props) {
@@ -24,11 +21,11 @@ class WeatherPage extends React.Component {
   render() {
     let query = (this.state.query) ? this.state.query : this.props.params.city;
     return <div>
-      <Header onChangeLocation={ this.handleChangeLocation }/>
+      <SearchBox onChangeLocation={ this.handleChangeLocation }/>
       <WeatherCurrent query={ query } />
       <ManageMyLocations location={ query }/>
       <WeatherForecast query={ query } />
-    </div>
+    </div>;
   }
 }
 
