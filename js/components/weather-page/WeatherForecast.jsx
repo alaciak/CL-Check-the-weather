@@ -27,7 +27,6 @@ class WeatherForecast extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dayOfWeek: '',
       loading: true,
       days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     }
@@ -90,16 +89,16 @@ class WeatherForecast extends React.Component {
           tempsMax3.push(parseInt(data.list[i].main.temp_max));
         }
 
-       tempsMax3.sort((a, b) => b - a);
-       tempsMin3.sort((a, b) => a - b);
+        tempsMax3.sort((a, b) => b - a);
+        tempsMin3.sort((a, b) => a - b);
 
         for(let i  = (day1.length + day2.length + day3.length - 2); i < (day1.length + day2.length + day3.length + day4.length); i++) {
           tempsMin4.push(parseInt(data.list[i].main.temp_min));
           tempsMax4.push(parseInt(data.list[i].main.temp_max));
         }
 
-       tempsMax4.sort((a, b) => b - a);
-       tempsMin4.sort((a, b) => a - b);
+        tempsMax4.sort((a, b) => b - a);
+        tempsMin4.sort((a, b) => a - b);
 
         this.setState({
           tempMin2: Math.ceil(tempsMin2[0]),
@@ -117,8 +116,9 @@ class WeatherForecast extends React.Component {
           loading: false
         });
       })
-      .catch(function(error) { console.log(error); });
-
+      .catch(function(error) {
+        console.log(error);
+      });
     }
   }
 
@@ -126,9 +126,9 @@ class WeatherForecast extends React.Component {
     this.getWeather(this.props.query);
   }
 
-componentWillReceiveProps(nextProps) {
-  this.getWeather(nextProps.query);
-}
+  componentWillReceiveProps(nextProps) {
+    this.getWeather(nextProps.query);
+  }
 
   render() {
     if (this.state.loading) {

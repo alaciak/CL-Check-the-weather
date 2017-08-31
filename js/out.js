@@ -27335,7 +27335,6 @@ var WeatherForecast = function (_React$Component4) {
     };
 
     _this4.state = {
-      dayOfWeek: '',
       loading: true,
       days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     };
