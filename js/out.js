@@ -33116,11 +33116,17 @@ module.exports = Main;
 "use strict";
 
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactAlert = __webpack_require__(233);
+
+var _reactAlert2 = _interopRequireDefault(_reactAlert);
 
 var _reactRouter = __webpack_require__(67);
 
@@ -33191,10 +33197,22 @@ var MyLocationsPage = function (_React$Component2) {
       _this2.setState({
         myLocations: locations
       });
+      _this2.msg.show('Your location has been successfully removed', {
+        time: 2000,
+        type: 'success',
+        icon: _react2.default.createElement('img', { src: 'images/alert-icon.png' })
+      });
     };
 
     _this2.state = {
       myLocations: []
+    };
+    _this2.alertOptions = {
+      offset: 14,
+      position: 'bottom left',
+      theme: 'dark',
+      time: 5000,
+      transition: 'scale'
     };
     return _this2;
   }
@@ -33264,6 +33282,13 @@ var MyLocationsPage = function (_React$Component2) {
                 '<< back to the main page'
               )
             )
+          ),
+          _react2.default.createElement(
+            'alert',
+            { className: 'col-4 alert-message' },
+            _react2.default.createElement(_reactAlert2.default, _extends({ ref: function ref(a) {
+                return _this3.msg = a;
+              } }, this.alertOptions))
           )
         );
       }
@@ -33733,7 +33758,6 @@ var WeatherForecast = function (_React$Component4) {
           }
           throw new TypeError("Error");
         }).then(function (data) {
-          console.log(data);
           var day1 = [];
           var day2 = [];
           var day3 = [];
