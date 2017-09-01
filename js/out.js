@@ -27193,10 +27193,18 @@ var WeatherForecastConditions = function (_React$Component2) {
       return _react2.default.createElement(
         'p',
         { className: 'weather-forecast_temperature' },
-        this.props.tempMax,
-        '\u2103 ',
-        this.props.tempMin,
-        '\u2103'
+        _react2.default.createElement(
+          'span',
+          { className: 'weather-forecast_temperature_max' },
+          this.props.tempMax,
+          '\u2103'
+        ),
+        _react2.default.createElement(
+          'span',
+          null,
+          this.props.tempMin,
+          '\u2103'
+        )
       );
     }
   }]);

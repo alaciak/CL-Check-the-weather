@@ -10,7 +10,7 @@ class WeatherForecastDay extends React.Component {
 class WeatherForecastConditions extends React.Component {
 
   render() {
-    return <p className='weather-forecast_temperature'>{ this.props.tempMax }&#8451; { this.props.tempMin }&#8451;</p>
+    return <p className='weather-forecast_temperature'><span className='weather-forecast_temperature_max'>{ this.props.tempMax }&#8451;</span><span>{ this.props.tempMin }&#8451;</span></p>
   }
 }
 
