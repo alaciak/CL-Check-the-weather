@@ -27245,6 +27245,7 @@ var WeatherForecast = function (_React$Component4) {
           }
           throw new TypeError("Error");
         }).then(function (data) {
+          console.log(data);
           var day1 = [];
           var day2 = [];
           var day3 = [];
