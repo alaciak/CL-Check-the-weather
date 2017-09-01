@@ -33853,6 +33853,13 @@ var MyLocationsPage = function (_React$Component2) {
               { className: 'link-main_page', to: '/' },
               '<< back to the main page'
             )
+          ),
+          _react2.default.createElement(
+            'alert',
+            { className: 'col-4 alert-message' },
+            _react2.default.createElement(_reactAlert2.default, _extends({ ref: function ref(a) {
+                return _this3.msg = a;
+              } }, this.alertOptions))
           )
         );
       } else {

@@ -67,6 +67,9 @@ class MyLocationsPage extends React.Component {
           <div>You have no locations added yet...</div>
           <Link className='link-main_page' to='/'>&lt;&lt; back to the main page</Link>
         </div>
+        <alert className='col-4 alert-message'>
+          <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
+        </alert>
       </div>
     } else {
       let locations = this.state.myLocations.map((el, index) => {
