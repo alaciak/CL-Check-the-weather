@@ -20,8 +20,8 @@ class App extends React.Component {
       <Route path="/" component={ Main }>
         <IndexRoute component={ WeatherPage }/>
         <Route path="/locations" component={ MyLocationsPage }/>
+        <Route path="/:city" component={ WeatherPage }/>
       </Route>
-      <Route path="/:city" component={ WeatherPage }/>
     </Router>;
   }
 }

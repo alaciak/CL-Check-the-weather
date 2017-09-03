@@ -103,7 +103,7 @@ class WeatherForecast extends React.Component {
         this.setState({
           tempMin2: Math.ceil(tempsMin2[0]),
           tempMax2: Math.ceil(tempsMax2[0]),
-          iconId2: data.list[(day1.length+ 4)].weather[0].icon,
+          iconId2: data.list[(day1.length + 4)].weather[0].icon,
           dayName2: this.state.days[new Date(data.list[(day1.length + 4)].dt_txt).getDay()],
           tempMin3: Math.ceil(tempsMin3[0]),
           tempMax3: Math.ceil(tempsMax3[0]),
