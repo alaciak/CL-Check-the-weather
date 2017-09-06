@@ -32,10 +32,9 @@ class WeatherDaily extends React.Component {
       tempsMin.push(parseInt(this.props.weatherDaily[i].main.temp_min));
       tempsMax.push(parseInt(this.props.weatherDaily[i].main.temp_max));
     }
-    tempsMax.sort((a, b) => b - a);
-    tempsMin.sort((a, b) => a - b);
-    let tempMin = Math.ceil(tempsMin[0]);
-    let tempMax = Math.ceil(tempsMax[0]);
+    let tempMax = Math.max(...tempsMax);
+    let tempMin = Math.min(...tempsMin);
+
     let iconId = this.props.weatherDaily[4].weather[0].icon.replace('n', 'd');
     let dayName = this.props.dayNames[new Date(this.props.weatherDaily[0].dt_txt).getDay()];
 
@@ -66,11 +65,9 @@ class WeatherForecast extends React.Component {
         }
         throw new TypeError("Error");
       }).then(data => {
-        let day1= [];
         let day2 = [];
         let day3 = [];
         let day4 = [];
-        let currentDay = new Date();
         let tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         let dayAfterTomorrow = new Date();
@@ -78,11 +75,7 @@ class WeatherForecast extends React.Component {
         let nextDay = new Date();
         nextDay.setDate(nextDay.getDate() + 3);
 
-
         for(let i = 0; i < data.list.length; i++) {
-          if(String(currentDay).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
-            day1.push(data.list[i]);
-          }
           if(String(tomorrow).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
             day2.push(data.list[i]);
           }
