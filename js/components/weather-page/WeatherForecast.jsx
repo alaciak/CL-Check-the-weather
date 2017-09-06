@@ -23,6 +23,17 @@ class WeatherForecastIcons extends React.Component {
   }
 }
 
+class WeatherDaily extends React.Component {
+
+  render() {
+    return <div className='col-4'>
+        <WeatherForecastDay dayName={ this.props.dayName }/>
+        <WeatherForecastIcons iconId={ this.props.iconId }/>
+        <WeatherForecastConditions tempMin={ this.props.tempMin } tempMax={ this.props.tempMax } />
+      </div>
+  }
+}
+
 class WeatherForecast extends React.Component {
   constructor(props) {
     super(props);
@@ -31,6 +42,7 @@ class WeatherForecast extends React.Component {
       days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     }
   }
+
 
 
   getWeather = query => {
@@ -53,6 +65,7 @@ class WeatherForecast extends React.Component {
         let tempsMax3  = [];
         let tempsMin4 = [];
         let tempsMax4  = [];
+
         let currentDay = new Date();
         let tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
@@ -138,21 +151,9 @@ class WeatherForecast extends React.Component {
         <div className='container'>
           <div className='row weather-forecast'>
             <p className='forecast-heading'>3 day weather forecast</p>
-            <div className='col-4'>
-              <WeatherForecastDay dayName={ this.state.dayName2 }/>
-              <WeatherForecastIcons iconId={ this.state.iconId2 }/>
-              <WeatherForecastConditions tempMin={ this.state.tempMin2 } tempMax={ this.state.tempMax2 } />
-            </div>
-            <div className='col-4'>
-              <WeatherForecastDay dayName={ this.state.dayName3 }/>
-              <WeatherForecastIcons iconId={ this.state.iconId3 }/>
-              <WeatherForecastConditions tempMin={ this.state.tempMin3 } tempMax={ this.state.tempMax3 } />
-            </div>
-            <div className='col-4'>
-              <WeatherForecastDay dayName={ this.state.dayName4 }/>
-              <WeatherForecastIcons iconId={ this.state.iconId4 }/>
-              <WeatherForecastConditions tempMin={ this.state.tempMin4 } tempMax={ this.state.tempMax4 } />
-            </div>
+            <WeatherDaily dayName={ this.state.dayName2 } iconId={ this.state.iconId2 } tempMin={ this.state.tempMin2 } tempMax={ this.state.tempMax2 } />
+            <WeatherDaily dayName={ this.state.dayName3 } iconId={ this.state.iconId3 } tempMin={ this.state.tempMin3 } tempMax={ this.state.tempMax3 } />
+            <WeatherDaily dayName={ this.state.dayName4 } iconId={ this.state.iconId4 } tempMin={ this.state.tempMin4 } tempMax={ this.state.tempMax4 } />
           </div>
         </div>
       </section>
