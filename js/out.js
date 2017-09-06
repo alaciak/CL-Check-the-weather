@@ -36202,15 +36202,16 @@ var WeatherDaily = function (_React$Component4) {
       tempsMin.sort(function (a, b) {
         return a - b;
       });
-
       var tempMin = Math.ceil(tempsMin[0]);
       var tempMax = Math.ceil(tempsMax[0]);
+      var iconId = this.props.weatherDaily[4].weather[0].icon.replace('n', 'd');
+      var dayName = this.props.dayNames[new Date(this.props.weatherDaily[0].dt_txt).getDay()];
 
       return _react2.default.createElement(
         'div',
         { className: 'col-4' },
-        _react2.default.createElement(WeatherForecastDay, { dayName: this.props.dayName }),
-        _react2.default.createElement(WeatherForecastIcons, { iconId: this.props.iconId }),
+        _react2.default.createElement(WeatherForecastDay, { dayName: dayName }),
+        _react2.default.createElement(WeatherForecastIcons, { iconId: iconId }),
         _react2.default.createElement(WeatherForecastConditions, { tempMin: tempMin, tempMax: tempMax })
       );
     }
@@ -36268,12 +36269,6 @@ var WeatherForecast = function (_React$Component5) {
             day2: day2,
             day3: day3,
             day4: day4,
-            iconId2: data.list[day1.length + 4].weather[0].icon,
-            dayName2: _this5.state.days[new Date(data.list[day1.length + 4].dt_txt).getDay()],
-            iconId3: data.list[day1.length + 12].weather[0].icon,
-            dayName3: _this5.state.days[new Date(data.list[day1.length + 12].dt_txt).getDay()],
-            iconId4: data.list[day1.length + 20].weather[0].icon,
-            dayName4: _this5.state.days[new Date(data.list[day1.length + 20].dt_txt).getDay()],
             loading: false
           });
         }).catch(function (error) {
@@ -36284,7 +36279,7 @@ var WeatherForecast = function (_React$Component5) {
 
     _this5.state = {
       loading: true,
-      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+      dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     };
     return _this5;
   }
@@ -36319,9 +36314,9 @@ var WeatherForecast = function (_React$Component5) {
                 { className: 'forecast-heading' },
                 '3 day weather forecast'
               ),
-              _react2.default.createElement(WeatherDaily, { dayName: this.state.dayName2, iconId: this.state.iconId2, weatherDaily: this.state.day2 }),
-              _react2.default.createElement(WeatherDaily, { dayName: this.state.dayName3, iconId: this.state.iconId3, weatherDaily: this.state.day3 }),
-              _react2.default.createElement(WeatherDaily, { dayName: this.state.dayName4, iconId: this.state.iconId4, weatherDaily: this.state.day4 })
+              _react2.default.createElement(WeatherDaily, { weatherDaily: this.state.day2, dayNames: this.state.dayNames }),
+              _react2.default.createElement(WeatherDaily, { weatherDaily: this.state.day3, dayNames: this.state.dayNames }),
+              _react2.default.createElement(WeatherDaily, { weatherDaily: this.state.day4, dayNames: this.state.dayNames })
             )
           )
         );

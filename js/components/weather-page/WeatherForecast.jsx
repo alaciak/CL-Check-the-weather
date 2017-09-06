@@ -34,13 +34,14 @@ class WeatherDaily extends React.Component {
     }
     tempsMax.sort((a, b) => b - a);
     tempsMin.sort((a, b) => a - b);
-
     let tempMin = Math.ceil(tempsMin[0]);
     let tempMax = Math.ceil(tempsMax[0]);
+    let iconId = this.props.weatherDaily[4].weather[0].icon.replace('n', 'd');
+    let dayName = this.props.dayNames[new Date(this.props.weatherDaily[0].dt_txt).getDay()];
 
     return <div className='col-4'>
-        <WeatherForecastDay dayName={ this.props.dayName }/>
-        <WeatherForecastIcons iconId={ this.props.iconId }/>
+        <WeatherForecastDay dayName={ dayName } />
+        <WeatherForecastIcons iconId={ iconId } />
         <WeatherForecastConditions tempMin={ tempMin } tempMax={ tempMax } />
       </div>
   }
@@ -51,11 +52,9 @@ class WeatherForecast extends React.Component {
     super(props);
     this.state = {
       loading: true,
-      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+      dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     }
   }
-
-
 
   getWeather = query => {
     if(query != '') {
@@ -99,12 +98,6 @@ class WeatherForecast extends React.Component {
           day2: day2,
           day3: day3,
           day4: day4,
-          iconId2: data.list[(day1.length + 4)].weather[0].icon,
-          dayName2: this.state.days[new Date(data.list[(day1.length + 4)].dt_txt).getDay()],
-          iconId3: data.list[(day1.length + 12)].weather[0].icon,
-          dayName3: this.state.days[new Date(data.list[(day1.length + 12)].dt_txt).getDay()],
-          iconId4: data.list[(day1.length + 20)].weather[0].icon,
-          dayName4: this.state.days[new Date(data.list[(day1.length + 20)].dt_txt).getDay()],
           loading: false
         });
       })
@@ -130,9 +123,9 @@ class WeatherForecast extends React.Component {
         <div className='container'>
           <div className='row weather-forecast'>
             <p className='forecast-heading'>3 day weather forecast</p>
-            <WeatherDaily dayName={ this.state.dayName2 } iconId={ this.state.iconId2 } weatherDaily={ this.state.day2 } />
-            <WeatherDaily dayName={ this.state.dayName3 } iconId={ this.state.iconId3 } weatherDaily={ this.state.day3 } />
-            <WeatherDaily dayName={ this.state.dayName4 } iconId={ this.state.iconId4 } weatherDaily={ this.state.day4 } />
+            <WeatherDaily weatherDaily={ this.state.day2 } dayNames={ this.state.dayNames } />
+            <WeatherDaily weatherDaily={ this.state.day3 } dayNames={ this.state.dayNames } />
+            <WeatherDaily weatherDaily={ this.state.day4 } dayNames={ this.state.dayNames } />
           </div>
         </div>
       </section>
