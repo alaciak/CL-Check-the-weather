@@ -36190,12 +36190,28 @@ var WeatherDaily = function (_React$Component4) {
   _createClass(WeatherDaily, [{
     key: 'render',
     value: function render() {
+      var tempsMin = [];
+      var tempsMax = [];
+      for (var i = 0; i < this.props.weatherDaily.length; i++) {
+        tempsMin.push(parseInt(this.props.weatherDaily[i].main.temp_min));
+        tempsMax.push(parseInt(this.props.weatherDaily[i].main.temp_max));
+      }
+      tempsMax.sort(function (a, b) {
+        return b - a;
+      });
+      tempsMin.sort(function (a, b) {
+        return a - b;
+      });
+
+      var tempMin = Math.ceil(tempsMin[0]);
+      var tempMax = Math.ceil(tempsMax[0]);
+
       return _react2.default.createElement(
         'div',
         { className: 'col-4' },
         _react2.default.createElement(WeatherForecastDay, { dayName: this.props.dayName }),
         _react2.default.createElement(WeatherForecastIcons, { iconId: this.props.iconId }),
-        _react2.default.createElement(WeatherForecastConditions, { tempMin: this.props.tempMin, tempMax: this.props.tempMax })
+        _react2.default.createElement(WeatherForecastConditions, { tempMin: tempMin, tempMax: tempMax })
       );
     }
   }]);
@@ -36225,13 +36241,6 @@ var WeatherForecast = function (_React$Component5) {
           var day2 = [];
           var day3 = [];
           var day4 = [];
-          var tempsMin2 = [];
-          var tempsMax2 = [];
-          var tempsMin3 = [];
-          var tempsMax3 = [];
-          var tempsMin4 = [];
-          var tempsMax4 = [];
-
           var currentDay = new Date();
           var tomorrow = new Date();
           tomorrow.setDate(tomorrow.getDate() + 1);
@@ -36242,65 +36251,27 @@ var WeatherForecast = function (_React$Component5) {
 
           for (var i = 0; i < data.list.length; i++) {
             if (String(currentDay).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
-              day1.push(data.list[i].dt_txt);
+              day1.push(data.list[i]);
             }
             if (String(tomorrow).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
-              day2.push(data.list[i].dt_txt);
+              day2.push(data.list[i]);
             }
             if (String(dayAfterTomorrow).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
-              day3.push(data.list[i].dt_txt);
+              day3.push(data.list[i]);
             }
             if (String(nextDay).slice(4, 16) === String(new Date(data.list[i].dt_txt)).slice(4, 16)) {
-              day4.push(data.list[i].dt_txt);
+              day4.push(data.list[i]);
             }
           }
 
-          for (var _i = day1.length - 1; _i < day1.length + day2.length; _i++) {
-            tempsMin2.push(parseInt(data.list[_i].main.temp_min));
-            tempsMax2.push(parseInt(data.list[_i].main.temp_max));
-          }
-          tempsMax2.sort(function (a, b) {
-            return b - a;
-          });
-          tempsMin2.sort(function (a, b) {
-            return a - b;
-          });
-
-          for (var _i2 = day1.length + day2.length - 2; _i2 < day1.length + day2.length + day3.length; _i2++) {
-            tempsMin3.push(parseInt(data.list[_i2].main.temp_min));
-            tempsMax3.push(parseInt(data.list[_i2].main.temp_max));
-          }
-
-          tempsMax3.sort(function (a, b) {
-            return b - a;
-          });
-          tempsMin3.sort(function (a, b) {
-            return a - b;
-          });
-
-          for (var _i3 = day1.length + day2.length + day3.length - 2; _i3 < day1.length + day2.length + day3.length + day4.length; _i3++) {
-            tempsMin4.push(parseInt(data.list[_i3].main.temp_min));
-            tempsMax4.push(parseInt(data.list[_i3].main.temp_max));
-          }
-
-          tempsMax4.sort(function (a, b) {
-            return b - a;
-          });
-          tempsMin4.sort(function (a, b) {
-            return a - b;
-          });
-
           _this5.setState({
-            tempMin2: Math.ceil(tempsMin2[0]),
-            tempMax2: Math.ceil(tempsMax2[0]),
+            day2: day2,
+            day3: day3,
+            day4: day4,
             iconId2: data.list[day1.length + 4].weather[0].icon,
             dayName2: _this5.state.days[new Date(data.list[day1.length + 4].dt_txt).getDay()],
-            tempMin3: Math.ceil(tempsMin3[0]),
-            tempMax3: Math.ceil(tempsMax3[0]),
             iconId3: data.list[day1.length + 12].weather[0].icon,
             dayName3: _this5.state.days[new Date(data.list[day1.length + 12].dt_txt).getDay()],
-            tempMin4: Math.ceil(tempsMin4[0]),
-            tempMax4: Math.ceil(tempsMax4[0]),
             iconId4: data.list[day1.length + 20].weather[0].icon,
             dayName4: _this5.state.days[new Date(data.list[day1.length + 20].dt_txt).getDay()],
             loading: false
@@ -36348,9 +36319,9 @@ var WeatherForecast = function (_React$Component5) {
                 { className: 'forecast-heading' },
                 '3 day weather forecast'
               ),
-              _react2.default.createElement(WeatherDaily, { dayName: this.state.dayName2, iconId: this.state.iconId2, tempMin: this.state.tempMin2, tempMax: this.state.tempMax2 }),
-              _react2.default.createElement(WeatherDaily, { dayName: this.state.dayName3, iconId: this.state.iconId3, tempMin: this.state.tempMin3, tempMax: this.state.tempMax3 }),
-              _react2.default.createElement(WeatherDaily, { dayName: this.state.dayName4, iconId: this.state.iconId4, tempMin: this.state.tempMin4, tempMax: this.state.tempMax4 })
+              _react2.default.createElement(WeatherDaily, { dayName: this.state.dayName2, iconId: this.state.iconId2, weatherDaily: this.state.day2 }),
+              _react2.default.createElement(WeatherDaily, { dayName: this.state.dayName3, iconId: this.state.iconId3, weatherDaily: this.state.day3 }),
+              _react2.default.createElement(WeatherDaily, { dayName: this.state.dayName4, iconId: this.state.iconId4, weatherDaily: this.state.day4 })
             )
           )
         );
