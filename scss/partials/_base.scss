@@ -3,8 +3,9 @@ body {
   background-image: url('../images/background_main.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   font-size: 12px;
-  min-height: 100vh;;
+  min-height: 100vh;
   @media (min-width : 480px) {
     font-size: 16px;
   }

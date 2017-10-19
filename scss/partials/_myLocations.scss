@@ -11,9 +11,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 7vh;
+    min-height: 7vh;
     border-radius: 5px;
-    @media (min-width: 768px) {
+    @media (min-width: 640px) {
       min-height: 10vh;
     }
   }
@@ -37,7 +37,7 @@
 .locations-list {
   background: map-get($color-background, main);
   opacity: 0.8;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   padding: 2em;
 
