@@ -305,7 +305,7 @@ input[type=text] {
 
 @media (min-width: 768px) {
   .my-locations div {
-    height: 10vh;
+    min-height: 10vh;
   }
 }
 
@@ -343,7 +343,7 @@ input[type=text] {
   font-weight: bold;
   color: #e6ebef;
   margin-top: 2em;
-  height: 5vh;
+  min-height: 5vh;
   background: #5789db;
   margin: 1em auto;
 }
@@ -377,9 +377,21 @@ input[type=text] {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1rem;
   margin-top: 2em;
   color: #e6ebef;
+}
+
+@media (min-width: 640px) {
+  .link-main_page {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 980px) {
+  .link-main_page {
+    font-size: 2rem;
+  }
 }
 
 .link-main_page a {

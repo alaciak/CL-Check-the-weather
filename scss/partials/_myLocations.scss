@@ -14,7 +14,7 @@
     height: 7vh;
     border-radius: 5px;
     @media (min-width: 768px) {
-      height: 10vh;
+      min-height: 10vh;
     }
   }
 
@@ -52,7 +52,7 @@
     font-weight: bold;
     color: map-get($color-fonts, menu);
     margin-top: 2em;
-    height: 5vh;
+    min-height: 5vh;
     background: map-get($color-fonts, highlight);
     margin: 1em auto;
     @media (min-width: 768px) {
@@ -84,10 +84,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1rem;
   margin-top: 2em;
   color: map-get($color-fonts, menu);
-
+  @media (min-width: 640px) {
+    font-size: 1.5rem;
+  }
+  @media (min-width: 980px) {
+    font-size: 2rem;
+  }
   a {
     color: map-get($color-fonts, menu);
   }
